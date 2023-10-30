@@ -7,6 +7,7 @@ import org.hibernate.annotations.Where;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -29,5 +30,11 @@ public class Employee extends AbstractDate implements Serializable {
 
     public  String status;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_detail_karyawan")
+    private DetailEmployee detailEmployee;
 
+
+    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade = CascadeType.ALL) // employee_id
+    private List<EmployeeAccount> accounts;
 }
