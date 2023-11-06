@@ -4,15 +4,13 @@ import id.nano.employeemanagement.entity.Employee;
 
 import java.util.Map;
 
-
 public interface EmployeeService {
-    public Map insert(Employee employee);
+    //
+    Map save(Employee employee);
 
-    public Map update(Employee employee);
+    Map update(Employee employee);
 
-    public Map delete(Long id);
+    Map delete(Long employee);
 
-    public Map getById(Long id);
-
-    public Map getAll(int size, int page);
+    Map getByID(Long employee);
 }

@@ -16,11 +16,11 @@ public class DetailEmployee extends AbstractDate implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    //    @NotBlank(message = "NIK harus diisi")
+//    @NotBlank(message = "NIK harus diisi")
     @Column(name = "nik")
     private String nik;
 
-    //    @NotBlank(message = "NPWP harus diisi")
+//    @NotBlank(message = "NPWP harus diisi")
     @Column(length = 15)
     private String npwp;
 }

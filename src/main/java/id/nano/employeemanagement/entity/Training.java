@@ -1,30 +1,25 @@
 package id.nano.employeemanagement.entity;
 
-
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.Where;
 
+import java.io.Serializable;
+
 @Data
 @Entity
-@Table(name = "rekening")
+@Table(name = "training")
 @Where(clause = "deleted_date is null")
-public class EmployeeAccount {
+public class Training extends AbstractDate implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "nama")
-    private String nama;
+    @Column(name = "pengajar")
+    private String pengajar;
 
-    @Column(name = "jenis")
-    private String jenis;
+    @Column(name = "tema")
+    private String tema;
 
-    @Column(length = 100)
-    private String rekening;
-
-    @ManyToOne
-    @JoinColumn(name = "id_karyawan")
-    private Employee employee;
 }

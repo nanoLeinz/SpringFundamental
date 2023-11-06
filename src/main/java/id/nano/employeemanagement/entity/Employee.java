@@ -1,6 +1,7 @@
 package id.nano.employeemanagement.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.Where;
@@ -8,33 +9,39 @@ import org.hibernate.annotations.Where;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
-@Entity
+//@EntityScan
 @Data
+@Entity
 @Table(name = "employee")
 @Where(clause = "deleted_date is null")
-public class Employee extends AbstractDate implements Serializable {
+public class Employee extends  AbstractDate implements Serializable {
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    public Long id;
 
-    String name;
+    public String name;
 
     @Column(name = "address", columnDefinition = "TEXT")
     public String address;
 
+    // 2016-01-01
     @Temporal(TemporalType.DATE)
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date dob;
 
-    public  String status;
+    public  String status = "active";
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_detail_karyawan")
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)// ono to one
+    @JoinColumn(name = "id_detail_karyawan") //nama column
     private DetailEmployee detailEmployee;
 
 
+    @JsonIgnore //: 100 rekening tampilin ke 100, ga ddisaranakan dengan banyak data
     @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade = CascadeType.ALL) // employee_id
-    private List<EmployeeAccount> accounts;
+    private List<Rekening> rekenings;
+    /*
+     */
+
 }

@@ -3,8 +3,10 @@ package id.nano.employeemanagement.controller;
 import id.nano.employeemanagement.entity.Employee;
 import id.nano.employeemanagement.repository.EmployeeRepository;
 import id.nano.employeemanagement.service.EmployeeService;
+import id.nano.employeemanagement.utils.Response;
 import id.nano.employeemanagement.utils.SimpleStringUtils;
 import jakarta.persistence.criteria.Predicate;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,18 +23,31 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/v1/employee")
+@Slf4j
 public class EmployeeController {
     @Autowired
     public EmployeeService employeeService;
 
-    SimpleStringUtils simpleStringUtils = new SimpleStringUtils();
+    @Autowired
+    public SimpleStringUtils simpleStringUtils;
+
+    @Autowired
+    public Response response;
 
     @Autowired
     public EmployeeRepository employeeRepository;
 
-    @PostMapping(value = {"/insert", "/insert/"})
+    @PostMapping(value = {"/save", "/save/"})
     public ResponseEntity<Map> save(@RequestBody Employee request) {
-        return new ResponseEntity<Map>(employeeService.insert(request), HttpStatus.OK);
+        try {
+            if (request.getName().isEmpty()) {
+                return new ResponseEntity<Map>(response.Error("name is required."), HttpStatus.NOT_FOUND); // 500
+            }
+            return new ResponseEntity<Map>(employeeService.save(request), HttpStatus.OK);
+
+        } catch (Exception e) {
+            return new ResponseEntity<Map>(response.Error(e.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR); // 500
+        }
     }
 
     @PutMapping(value = {"/update", "/update/"})
@@ -47,7 +62,28 @@ public class EmployeeController {
 
     @GetMapping(value = {"/{id}", "/{id}/"})
     public ResponseEntity<Map> getById(@PathVariable("id") Long id) {
-        return new ResponseEntity<Map>(employeeService.delete(id), HttpStatus.OK);
+        return new ResponseEntity<Map>(employeeService.getByID(id), HttpStatus.OK);
+    }
+
+    @GetMapping(value = {"/list", "/list/"})
+    public ResponseEntity<Map> listQuizHeader(
+            @RequestParam() Integer page,
+            @RequestParam(required = true) Integer size,
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String orderby,
+            @RequestParam(required = false) String ordertype) {
+
+        Pageable show_data = simpleStringUtils.getShort(orderby, ordertype, page, size);
+        Page<Employee> list = null;
+
+        if (name != null && !name.isEmpty()) {
+            list = employeeRepository.getByLikeName("%" + name + "%", show_data);
+        } else {
+            list = employeeRepository.getALlPage(show_data);
+        }
+        Map map = new HashMap();
+        map.put("data", list);
+        return new ResponseEntity<Map>(map, new HttpHeaders(), HttpStatus.OK);
     }
 
     @GetMapping(value = {"/list-spec", "/list-spec/"})
@@ -59,7 +95,6 @@ public class EmployeeController {
             @RequestParam(required = false) String status,
             @RequestParam(required = false) String orderby,
             @RequestParam(required = false) String ordertype) {
-
         Pageable show_data = simpleStringUtils.getShort(orderby, ordertype, page, size);
 
         Specification<Employee> spec =
@@ -80,18 +115,26 @@ public class EmployeeController {
                     return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
                 });
 
-        //        PageRequest pageRequest = PageRequest.of(page,size);
         Page<Employee> list = employeeRepository.findAll(spec, show_data);
 
         Map map = new HashMap();
-        map.put("data",list);
+        map.put("data", list);
         return new ResponseEntity<Map>(map, new HttpHeaders(), HttpStatus.OK);
     }
 
+    /*
+    bawan jpa dari spring boot
+     */
     @GetMapping(value = {"/default-jpa", "/default-jpa/"})
     public ResponseEntity<?> defaultJPA() {
-        return new ResponseEntity<>(employeeRepository.findAll(), HttpStatus.OK);
-    }
+//        Map map = new HashMap();
+//        return new ResponseEntity<>(employeeRepository.findById(3L), HttpStatus.OK);
+//        return new ResponseEntity<>(employeeRepository.findAll(), HttpStatus.OK);
+//        return new ResponseEntity<>(employeeRepository.findById(4L), HttpStatus.OK);
+        Pageable show_data = simpleStringUtils.getShort("id", "desc", 0, 10);
+
+        return new ResponseEntity<>(employeeRepository.findByNameAndStatusAndAddress("Novian", "active", "jakarta", show_data), HttpStatus.OK);
+
+    } //
 
 }
-

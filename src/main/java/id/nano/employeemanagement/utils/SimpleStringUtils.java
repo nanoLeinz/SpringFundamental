@@ -4,9 +4,11 @@ package id.nano.employeemanagement.utils;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Component;
 
 import java.util.Random;
 
+@Component
 public class SimpleStringUtils {
 
     public Pageable getShort(String orderby, String ordertype, Integer page, Integer size) {
