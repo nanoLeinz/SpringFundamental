@@ -1,0 +1,2285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="11160e3f-4d89-44d1-8012-334b2ba32401" activeEnvironment="Default" name="mortgages" resourceRoot="" soapui-version="5.7.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="3474878a-7dd1-402d-b103-d4f971793c25" wsaVersion="NONE" name="MortgageSoap11" type="wsdl" bindingName="{http://www.alpabit.com}MortgageSoap11" soapVersion="1_1" anonymous="optional" definition="http://10.102.3.47:8004/be-mortgage/ws/mortgage.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://10.102.3.47:8004/be-mortgage/ws/mortgage.wsdl"><con:part><con:url>http://10.102.3.47:8004/be-mortgage/ws/mortgage.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://www.alpabit.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://www.alpabit.com" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.alpabit.com">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.alpabit.com" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="AssignApplicationTaskRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="NPK" type="xs:string"/>
+            <xs:element name="TaskId" type="xs:string"/>
+            <xs:element name="AppId" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AssignApplicationTaskResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="errorSchema" type="tns:errorSchema"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetApplicationPararelTaskListRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="NPK" type="xs:string"/>
+            <xs:element name="Stage" type="xs:string"/>
+            <xs:element name="appId" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetApplicationPararelTaskListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="errorSchema" type="tns:errorSchema"/>
+            <xs:element minOccurs="0" name="OutputSchema" type="tns:getApplicationPararelTaskListOutputSchema"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetApplicationTaskListRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="NPK" type="xs:string"/>
+            <xs:element name="AssignmentFilter" type="xs:string"/>
+            <xs:element name="StartPage" type="xs:string"/>
+            <xs:element name="EndPage" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetApplicationTaskListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ErrorSchema" type="tns:errorSchema"/>
+            <xs:element minOccurs="0" name="OutputSchema" type="tns:getApplicationTaskListOutputSchema"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetBuildingStatusRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="requestType" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetBuildingStatusResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="BuildingStatusCode" type="xs:string"/>
+            <xs:element name="BuildingStatusName" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetBusinessEntityRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="requestType" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetBusinessEntityResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="BusinessEntityCode" type="xs:string"/>
+            <xs:element name="BusinessEntityName" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetLovParamsRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="keyGroup" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetLovParamsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ErrorSchema" type="tns:errorSchema"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="listData" nillable="true">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" name="value" type="xs:string"/>
+                  <xs:element minOccurs="0" name="description" type="xs:string"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetReferralRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="requestType" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetReferralResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ReferralCode" type="xs:string"/>
+            <xs:element name="ReferralName" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InquiryAmlProcessRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="applicationNo" type="xs:string"/>
+            <xs:element name="workflowId" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InquiryAmlProcessResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ErrorSchema" type="tns:errorSchema"/>
+            <xs:element minOccurs="0" name="OutputSchema" type="tns:inquiryAmlProcessOutputSchema"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InquiryAmlockRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="requestUuid" type="xs:string"/>
+            <xs:element name="traceNo" type="xs:string"/>
+            <xs:element name="applicationNo" type="xs:string"/>
+            <xs:element name="nik" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InquiryAmlockResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ErrorSchema" type="tns:errorSchema"/>
+            <xs:element name="OutputSchema" type="tns:inquiryAmlockOutputSchema"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InquiryDataHumanTaskRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="AppId" type="xs:string"/>
+            <xs:element name="StageCode" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InquiryDataHumanTaskResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="NIK" type="xs:string"/>
+            <xs:element minOccurs="0" name="MobileNumber" type="xs:string"/>
+            <xs:element minOccurs="0" name="IsSyariah" type="xs:string"/>
+            <xs:element minOccurs="0" name="ProductCode" type="xs:string"/>
+            <xs:element minOccurs="0" name="ApplicationName" type="xs:string"/>
+            <xs:element minOccurs="0" name="StagesDescription" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InquiryIncomeRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="requestUuid" type="xs:string"/>
+            <xs:element name="traceNo" type="xs:string"/>
+            <xs:element name="applicationNo" type="xs:string"/>
+            <xs:element name="nik" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InquiryIncomeResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="errorSchema" type="tns:errorSchema"/>
+            <xs:element name="outputSchema" type="tns:inquiryIncomeOutputSchema"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InquiryInstinctRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="requestUuid" type="xs:string"/>
+            <xs:element name="traceNo" type="xs:string"/>
+            <xs:element name="applicationNo" type="xs:string"/>
+            <xs:element name="nik" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InquiryInstinctResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="errorSchema" type="tns:errorSchema"/>
+            <xs:element name="outputSchema" type="tns:inquiryInstinctOutputSchema"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InquiryKycRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="requestUuid" type="xs:string"/>
+            <xs:element name="traceNo" type="xs:string"/>
+            <xs:element name="applicationNo" type="xs:string"/>
+            <xs:element name="nik" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InquiryKycResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ErrorSchema" type="tns:errorSchema"/>
+            <xs:element name="OutputSchema" type="tns:inquiryKycOutputSchema"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InquiryNibcRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="requestUuid" type="xs:string"/>
+            <xs:element name="traceNo" type="xs:string"/>
+            <xs:element name="applicationNo" type="xs:string"/>
+            <xs:element name="nik" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InquiryNibcResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="errorSchema" type="tns:errorSchema"/>
+            <xs:element name="outputSchema" type="tns:inquiryNibcOutputSchema"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InquiryPefindoRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="requestUuid" type="xs:string"/>
+            <xs:element name="traceNo" type="xs:string"/>
+            <xs:element name="applicationNo" type="xs:string"/>
+            <xs:element name="nik" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InquiryPefindoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="errorSchema" type="tns:errorSchema"/>
+            <xs:element minOccurs="0" name="outputSchema" type="tns:inquiryPefindoOutputSchema"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InquiryWealthRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="requestUuid" type="xs:string"/>
+            <xs:element name="traceNo" type="xs:string"/>
+            <xs:element name="applicationNo" type="xs:string"/>
+            <xs:element name="nik" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InquiryWealthResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="errorSchema" type="tns:errorSchema"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ProcessAmlRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="RequestUuid" type="xs:string"/>
+            <xs:element name="TraceNo" type="xs:string"/>
+            <xs:element name="WorkflowId" type="xs:string"/>
+            <xs:element name="ApplicationId" type="xs:string"/>
+            <xs:element maxOccurs="unbounded" name="Data" type="tns:typeAmlData"/>
+            <xs:element name="StartNumber" type="xs:string"/>
+            <xs:element name="ApplicationNo" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ProcessAmlResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="errorSchema" type="tns:errorSchema"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ProcessPefindoRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="workflowId" type="xs:string"/>
+            <xs:element minOccurs="0" name="reffNumber" type="xs:string"/>
+            <xs:element minOccurs="0" name="idReg" type="xs:string"/>
+            <xs:element minOccurs="0" name="statusApp" type="xs:string"/>
+            <xs:element minOccurs="0" name="name" type="xs:string"/>
+            <xs:element minOccurs="0" name="dob" type="xs:string"/>
+            <xs:element minOccurs="0" name="ktp" type="xs:string"/>
+            <xs:element minOccurs="0" name="npwp" type="xs:string"/>
+            <xs:element minOccurs="0" name="bornPlace" type="xs:string"/>
+            <xs:element minOccurs="0" name="phoneNumber" type="xs:string"/>
+            <xs:element minOccurs="0" name="mobileNumber" type="xs:string"/>
+            <xs:element minOccurs="0" name="ktpAddress_1" type="xs:string"/>
+            <xs:element minOccurs="0" name="ktpAddress_2" type="xs:string"/>
+            <xs:element minOccurs="0" name="ktpAddress_3" type="xs:string"/>
+            <xs:element minOccurs="0" name="ktpAddress_city" type="xs:string"/>
+            <xs:element minOccurs="0" name="ktpAddress_zipcode" type="xs:string"/>
+            <xs:element minOccurs="0" name="domAddr_1" type="xs:string"/>
+            <xs:element minOccurs="0" name="domAddr_2" type="xs:string"/>
+            <xs:element minOccurs="0" name="domAddr_3" type="xs:string"/>
+            <xs:element minOccurs="0" name="domAddr_city" type="xs:string"/>
+            <xs:element minOccurs="0" name="domAddr_zipcode" type="xs:string"/>
+            <xs:element minOccurs="0" name="officeName" type="xs:string"/>
+            <xs:element minOccurs="0" name="officeAddr_1" type="xs:string"/>
+            <xs:element minOccurs="0" name="officeAddr_2" type="xs:string"/>
+            <xs:element minOccurs="0" name="officeAddr_3" type="xs:string"/>
+            <xs:element minOccurs="0" name="officeAddr_city" type="xs:string"/>
+            <xs:element minOccurs="0" name="officeAddr_zipcode" type="xs:string"/>
+            <xs:element minOccurs="0" name="kodereffpengguna" type="xs:string"/>
+            <xs:element minOccurs="0" name="employeeType" type="xs:string"/>
+            <xs:element minOccurs="0" name="custSegment" type="xs:string"/>
+            <xs:element minOccurs="0" name="collateral" type="xs:string"/>
+            <xs:element minOccurs="0" name="collateralLtv" type="xs:string"/>
+            <xs:element minOccurs="0" name="perusahaan" type="xs:string"/>
+            <xs:element minOccurs="0" name="mscCode" type="xs:string"/>
+            <xs:element minOccurs="0" name="officePhone" type="xs:string"/>
+            <xs:element minOccurs="0" name="occupation" type="xs:string"/>
+            <xs:element minOccurs="0" name="billingAddress" type="xs:string"/>
+            <xs:element minOccurs="0" name="plafon" type="xs:string"/>
+            <xs:element minOccurs="0" name="tenor" type="xs:string"/>
+            <xs:element minOccurs="0" name="interest" type="xs:string"/>
+            <xs:element minOccurs="0" name="homeStatus" type="xs:string"/>
+            <xs:element minOccurs="0" name="jenisKelamin" type="xs:string"/>
+            <xs:element minOccurs="0" name="tempatPendirian" type="xs:string"/>
+            <xs:element minOccurs="0" name="mmn" type="xs:string"/>
+            <xs:element minOccurs="0" name="requestType" type="xs:string"/>
+            <xs:element minOccurs="0" name="inquiryReason" type="xs:string"/>
+            <xs:element minOccurs="0" name="inquiryReasonText" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ProcessPefindoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="errorSchema" type="tns:errorSchema"/>
+            <xs:element minOccurs="0" name="outputSchema" type="tns:processPefindoOutputSchema"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ReAssignApplicationTaskRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="NPK" type="xs:string"/>
+            <xs:element name="AssignToNPK" type="xs:string"/>
+            <xs:element name="TaskId" type="xs:string"/>
+            <xs:element name="AppId" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ReAssignApplicationTaskResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="errorSchema" type="tns:errorSchema"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SaveAmlRecomendationRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="RecomendSubmission" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SaveAmlRecomendationResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ErrorSchema" type="tns:errorSchema"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SaveWorkflowDetailBpmRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="applicationNo" type="xs:string"/>
+            <xs:element name="workflowId" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SaveWorkflowDetailBpmResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ErrorSchema" type="tns:errorSchema"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SaveWorkflowHeaderBpmRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="applicationNo" type="xs:string"/>
+            <xs:element name="workflowId" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SaveWorkflowHeaderBpmResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ErrorSchema" type="tns:errorSchema"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SubmitApplicationTaskAMLRecomendSubmissionRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="NPK" type="xs:string"/>
+            <xs:element name="RecomendSubmission" type="xs:string"/>
+            <xs:element name="TaskId" type="xs:string"/>
+            <xs:element name="AppId" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SubmitApplicationTaskAMLRecomendSubmissionResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="errorSchema" type="tns:errorSchema"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SubmitApplicationTaskAndAssignRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="NPK" type="xs:string"/>
+            <xs:element maxOccurs="unbounded" name="AssignToNPKList" type="tns:typeAssignToNPKList"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SubmitApplicationTaskAndAssignResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="errorSchema" type="tns:errorSchema"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SubmitApplicationTaskRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="NPK" type="xs:string"/>
+            <xs:element name="Action" type="xs:string"/>
+            <xs:element name="TaskId" type="xs:string"/>
+            <xs:element name="AppId" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SubmitApplicationTaskResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="errorSchema" type="tns:errorSchema"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getAMLResultReviewRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="appNo" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getAMLResultReviewResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ErrorSchema" type="tns:errorSchema"/>
+            <xs:element minOccurs="0" name="OutputSchema" type="tns:getAMLResultReviewOutputSchema"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getApplicationExistingMortgageRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="idNo" type="xs:string"/>
+            <xs:element name="idType" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getApplicationExistingMortgageResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ErrorSchema" type="tns:errorSchema"/>
+            <xs:element minOccurs="0" name="OutputSchema" type="tns:getApplicationExistingMortgageOutputSchema"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getDataNotifAIPStatusRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="appNo" type="xs:string"/>
+            <xs:element name="workflowId" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getDataNotifAIPStatusResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ErrorSchema" type="tns:errorSchema"/>
+            <xs:element minOccurs="0" name="OutputSchema" type="tns:getDataNotifAIPStatusOutputSchema"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="submissionForBPMRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="msgHeaderRq">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="reqId" type="xs:string"/>
+                  <xs:element name="traceNumber" type="xs:string"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="msgBodyRq">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="applicationNumber" type="xs:string"/>
+                  <xs:element name="channel" type="xs:string"/>
+                  <xs:element name="deviceId" type="xs:string"/>
+                  <xs:element name="productCode" type="xs:string"/>
+                  <xs:element name="referralCode" type="xs:string"/>
+                  <xs:element name="salesCode" type="xs:string"/>
+                  <xs:element name="maritalStatusCode" type="xs:string"/>
+                  <xs:element name="premaritalAgreement" type="xs:string"/>
+                  <xs:element name="jointIncome" type="xs:string"/>
+                  <xs:element name="eligibilityStatusIndent" type="xs:string"/>
+                  <xs:element maxOccurs="unbounded" name="applicationDetail">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="isSyariahFlag" type="xs:string"/>
+                        <xs:element name="subProductCode" type="xs:string"/>
+                        <xs:element name="developerGroupCode" type="xs:string"/>
+                        <xs:element name="developerCode" type="xs:string"/>
+                        <xs:element name="projectCode" type="xs:string"/>
+                        <xs:element name="propertyType" type="xs:string"/>
+                        <xs:element name="subProjectCode" type="xs:string"/>
+                        <xs:element name="buildingSize" type="xs:string"/>
+                        <xs:element name="landSize" type="xs:string"/>
+                        <xs:element name="propertyStatus" type="xs:string"/>
+                        <xs:element name="purchasePrice" type="xs:string"/>
+                        <xs:element name="downPayment" type="xs:string"/>
+                        <xs:element name="tenor" type="xs:string"/>
+                        <xs:element name="interestRate" type="xs:string"/>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="applicant">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="identificationNumber" type="xs:string"/>
+                        <xs:element name="fullName" type="xs:string"/>
+                        <xs:element name="placeOfBirth" type="xs:string"/>
+                        <xs:element name="dateOfBirth" type="xs:string"/>
+                        <xs:element name="maritalStatusCode" type="xs:string"/>
+                        <xs:element name="religionCode" type="xs:string"/>
+                        <xs:element name="motherName" type="xs:string"/>
+                        <xs:element name="lastEducation" type="xs:string"/>
+                        <xs:element name="homeNumber" type="xs:string"/>
+                        <xs:element name="workOverseas" type="xs:string"/>
+                        <xs:element name="employmentType" type="xs:string"/>
+                        <xs:element name="employmentStatus" type="xs:string"/>
+                        <xs:element name="position" type="xs:string"/>
+                        <xs:element name="companyName" type="xs:string"/>
+                        <xs:element name="workNumber" type="xs:string"/>
+                        <xs:element name="income" type="xs:string"/>
+                        <xs:element name="usernameBPJS" type="xs:string"/>
+                        <xs:element name="password" type="xs:string"/>
+                        <xs:element name="lengthOfWorkYears" type="xs:string"/>
+                        <xs:element name="lengthOfWorkMonth" type="xs:string"/>
+                        <xs:element name="badanHukum" type="xs:string"/>
+                        <xs:element name="companyNPWP" type="xs:string"/>
+                        <xs:element name="companyType" type="xs:string"/>
+                        <xs:element name="businessLicenceNumber" type="xs:string"/>
+                        <xs:element name="businessLicenceDate" type="xs:string"/>
+                        <xs:element name="addressApplicant" type="tns:typeAddress"/>
+                        <xs:element name="addressDomicile" type="tns:typeAddress"/>
+                        <xs:element name="addressWorkingLocation" type="tns:typeAddress"/>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="spouse">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="identificationNumber" type="xs:string"/>
+                        <xs:element name="fullName" type="xs:string"/>
+                        <xs:element name="placeOfBirth" type="xs:string"/>
+                        <xs:element name="dateOfBirth" type="xs:string"/>
+                        <xs:element name="maritalStatusCode" type="xs:string"/>
+                        <xs:element name="religionCode" type="xs:string"/>
+                        <xs:element name="GCN" type="xs:string"/>
+                        <xs:element name="CIF" type="xs:string"/>
+                        <xs:element name="CIFSource" type="xs:string"/>
+                        <xs:element name="ETBFlag" type="xs:string"/>
+                        <xs:element name="ETBPayrollFlag" type="xs:string"/>
+                        <xs:element name="employmentType" type="xs:string"/>
+                        <xs:element name="employmentStatus" type="xs:string"/>
+                        <xs:element name="position" type="xs:string"/>
+                        <xs:element name="companyName" type="xs:string"/>
+                        <xs:element name="workPhoneNumber" type="xs:string"/>
+                        <xs:element name="income" type="xs:string"/>
+                        <xs:element name="usernameBPJS" type="xs:string"/>
+                        <xs:element name="password" type="xs:string"/>
+                        <xs:element name="lengthOfWorkYears" type="xs:string"/>
+                        <xs:element name="lengthOfWorkMonth" type="xs:string"/>
+                        <xs:element name="badanHukum" type="xs:string"/>
+                        <xs:element name="companyNPWP" type="xs:string"/>
+                        <xs:element name="economySector" type="xs:string"/>
+                        <xs:element name="companyType" type="xs:string"/>
+                        <xs:element name="businessLicenceNumber" type="xs:string"/>
+                        <xs:element name="businessLicenceDate" type="xs:string"/>
+                        <xs:element name="addressSpouse" type="tns:typeAddress"/>
+                        <xs:element name="addressWorkingLocation" type="tns:typeAddress"/>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element maxOccurs="unbounded" name="document">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="documentType" type="xs:string"/>
+                        <xs:element name="documentTitle" type="xs:string"/>
+                        <xs:element name="documentStatus" type="xs:string"/>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="submissionForBPMResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ErrorSchema" type="tns:errorSchema"/>
+            <xs:element minOccurs="0" name="OutputSchema" type="tns:submissionForBPMOutputSchema"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="errorSchema">
+        <xs:sequence>
+          <xs:element name="errorCode" type="xs:string"/>
+          <xs:element name="errorMessage" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="inquiryAmlProcessOutputSchema">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="applicationNo" type="xs:string"/>
+          <xs:element minOccurs="0" name="workflowId" type="xs:string"/>
+          <xs:element minOccurs="0" name="result" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="inquiryAmlockOutputSchema">
+        <xs:sequence>
+          <xs:element name="IsMarried" type="xs:string"/>
+          <xs:element name="IsPrenup" type="xs:string"/>
+          <xs:element name="ApplicantSelfEmployee" type="xs:string"/>
+          <xs:element name="SpouseSelfEmployee" type="xs:string"/>
+          <xs:element name="TraceNo" type="xs:string"/>
+          <xs:element name="RequestUuid" type="xs:string"/>
+          <xs:element name="Name" type="xs:string"/>
+          <xs:element name="StartNumber" type="xs:string"/>
+          <xs:element name="ApplicationNo" type="xs:string"/>
+          <xs:element name="ApplicantName" type="xs:string"/>
+          <xs:element name="SpouseName" type="xs:string"/>
+          <xs:element name="CompanyNameApplicant" type="xs:string"/>
+          <xs:element name="CompanySpouseApplicant" type="xs:string"/>
+          <xs:element name="MobileNumber" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="typeAmlData">
+        <xs:sequence>
+          <xs:element name="Name" type="xs:string"/>
+          <xs:element name="Type" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getApplicationExistingMortgageOutputSchema">
+        <xs:sequence>
+          <xs:element name="result" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="inquiryIncomeOutputSchema">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ListInquiryIncome" nillable="true" type="tns:typeInquiryIncome"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="typeInquiryIncome">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="username" type="xs:string"/>
+          <xs:element minOccurs="0" name="password" type="xs:string"/>
+          <xs:element minOccurs="0" name="refNo" type="xs:string"/>
+          <xs:element minOccurs="0" name="declareAmount" type="xs:string"/>
+          <xs:element minOccurs="0" name="namaPerusahaan" type="xs:string"/>
+          <xs:element minOccurs="0" name="nik" type="xs:string"/>
+          <xs:element minOccurs="0" name="statusEmployee" type="xs:string"/>
+          <xs:element minOccurs="0" name="married" type="xs:string"/>
+          <xs:element minOccurs="0" name="prenup" type="xs:string"/>
+          <xs:element minOccurs="0" name="jointIncome" type="xs:string"/>
+          <xs:element minOccurs="0" name="statusSpouseEmployee" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="inquiryInstinctOutputSchema">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Application" type="tns:typeApplication"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="typeApplication">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Organisation" type="xs:string"/>
+          <xs:element minOccurs="0" name="CountryCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="GroupMemberCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="ApplicationNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="CaptureDate" type="xs:string"/>
+          <xs:element minOccurs="0" name="CaptureTime" type="xs:string"/>
+          <xs:element minOccurs="0" name="ExpiryDate" type="xs:string"/>
+          <xs:element minOccurs="0" name="ApplicationDate" type="xs:string"/>
+          <xs:element minOccurs="0" name="ApplicationType" type="xs:string"/>
+          <xs:element minOccurs="0" name="AmountLimit" type="xs:string"/>
+          <xs:element minOccurs="0" name="Branch" type="xs:string"/>
+          <xs:element minOccurs="0" name="Decision" type="xs:string"/>
+          <xs:element minOccurs="0" name="DecisionReason" type="xs:string"/>
+          <xs:element minOccurs="0" name="DecisionDate" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField1" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField2" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField3" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField4" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField5" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField6" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField7" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField8" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField9" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField10" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField11" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField12" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField13" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField14" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField15" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField16" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField17" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField18" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField19" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField20" type="xs:string"/>
+          <xs:element minOccurs="0" name="Applicant" type="tns:typeApplicant"/>
+          <xs:element minOccurs="0" name="Prenup" type="xs:string"/>
+          <xs:element minOccurs="0" name="Merried" type="xs:string"/>
+          <xs:element minOccurs="0" name="AAccountantSolicitor" type="tns:typeAAccountantSolicitor"/>
+          <xs:element minOccurs="0" name="IntroducerAgent" type="tns:typeIntroducerAgent"/>
+          <xs:element minOccurs="0" name="Reference" type="tns:typeReference"/>
+          <xs:element minOccurs="0" name="User" type="tns:typeUser"/>
+          <xs:element minOccurs="0" name="User2" type="tns:typeUser2"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="typeApplicant">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Code" type="xs:string"/>
+          <xs:element minOccurs="0" name="IdNumber1" type="xs:string"/>
+          <xs:element minOccurs="0" name="IdNumber2" type="xs:string"/>
+          <xs:element minOccurs="0" name="IdNumber3" type="xs:string"/>
+          <xs:element minOccurs="0" name="Surname" type="xs:string"/>
+          <xs:element minOccurs="0" name="FirstName" type="xs:string"/>
+          <xs:element minOccurs="0" name="MiddleName" type="xs:string"/>
+          <xs:element minOccurs="0" name="Sex" type="xs:string"/>
+          <xs:element minOccurs="0" name="DateOfBirth" type="xs:string"/>
+          <xs:element minOccurs="0" name="HomeAddress1" type="xs:string"/>
+          <xs:element minOccurs="0" name="HomeAddress2" type="xs:string"/>
+          <xs:element minOccurs="0" name="HomeAddress3" type="xs:string"/>
+          <xs:element minOccurs="0" name="HomeAddress4" type="xs:string"/>
+          <xs:element minOccurs="0" name="HomeAddress5" type="xs:string"/>
+          <xs:element minOccurs="0" name="HomeAddress6" type="xs:string"/>
+          <xs:element minOccurs="0" name="HomePostcode" type="xs:string"/>
+          <xs:element minOccurs="0" name="HomePhoneNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="MobilePhoneNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="CompanyName" type="xs:string"/>
+          <xs:element minOccurs="0" name="CompanyAddress1" type="xs:string"/>
+          <xs:element minOccurs="0" name="CompanyAddress2" type="xs:string"/>
+          <xs:element minOccurs="0" name="CompanyAddress3" type="xs:string"/>
+          <xs:element minOccurs="0" name="CompanyAddress4" type="xs:string"/>
+          <xs:element minOccurs="0" name="CompanyAddress5" type="xs:string"/>
+          <xs:element minOccurs="0" name="CompanyAddress6" type="xs:string"/>
+          <xs:element minOccurs="0" name="CompanyPostcode" type="xs:string"/>
+          <xs:element minOccurs="0" name="CompanyPhoneNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField1" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField2" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField3" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField4" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField5" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField6" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField7" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField8" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField9" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField10" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField11" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField12" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField13" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField14" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField15" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField16" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField17" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField18" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField19" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField20" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="typeAAccountantSolicitor">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Category" type="xs:string"/>
+          <xs:element minOccurs="0" name="IdNumber1" type="xs:string"/>
+          <xs:element minOccurs="0" name="IdNumber2" type="xs:string"/>
+          <xs:element minOccurs="0" name="IdNumber3" type="xs:string"/>
+          <xs:element minOccurs="0" name="Surname" type="xs:string"/>
+          <xs:element minOccurs="0" name="FirstName" type="xs:string"/>
+          <xs:element minOccurs="0" name="MiddleName" type="xs:string"/>
+          <xs:element minOccurs="0" name="MobilePhoneNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="CompanyName" type="xs:string"/>
+          <xs:element minOccurs="0" name="CompanyAddress1" type="xs:string"/>
+          <xs:element minOccurs="0" name="CompanyAddress2" type="xs:string"/>
+          <xs:element minOccurs="0" name="CompanyAddress3" type="xs:string"/>
+          <xs:element minOccurs="0" name="CompanyAddress4" type="xs:string"/>
+          <xs:element minOccurs="0" name="CompanyAddress5" type="xs:string"/>
+          <xs:element minOccurs="0" name="CompanyAddress6" type="xs:string"/>
+          <xs:element minOccurs="0" name="CompanyPostcode" type="xs:string"/>
+          <xs:element minOccurs="0" name="CompanyPhoneNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField1" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField2" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField3" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField4" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField5" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField6" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField7" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField8" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField9" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField10" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="typeIntroducerAgent">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Code" type="xs:string"/>
+          <xs:element minOccurs="0" name="IdNumber1" type="xs:string"/>
+          <xs:element minOccurs="0" name="IdNumber2" type="xs:string"/>
+          <xs:element minOccurs="0" name="IdNumber3" type="xs:string"/>
+          <xs:element minOccurs="0" name="Surname" type="xs:string"/>
+          <xs:element minOccurs="0" name="FirstName" type="xs:string"/>
+          <xs:element minOccurs="0" name="MiddleName" type="xs:string"/>
+          <xs:element minOccurs="0" name="MobilePhoneNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="CompanyName" type="xs:string"/>
+          <xs:element minOccurs="0" name="CompanyAddress1" type="xs:string"/>
+          <xs:element minOccurs="0" name="CompanyAddress2" type="xs:string"/>
+          <xs:element minOccurs="0" name="CompanyAddress3" type="xs:string"/>
+          <xs:element minOccurs="0" name="CompanyAddress4" type="xs:string"/>
+          <xs:element minOccurs="0" name="CompanyAddress5" type="xs:string"/>
+          <xs:element minOccurs="0" name="CompanyAddress6" type="xs:string"/>
+          <xs:element minOccurs="0" name="CompanyPostcode" type="xs:string"/>
+          <xs:element minOccurs="0" name="CompanyPhoneNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField1" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField2" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField3" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField4" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField5" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField6" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField7" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField8" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField9" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField10" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="typeReference">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Code" type="xs:string"/>
+          <xs:element minOccurs="0" name="IdNumber1" type="xs:string"/>
+          <xs:element minOccurs="0" name="IdNumber2" type="xs:string"/>
+          <xs:element minOccurs="0" name="IdNumber3" type="xs:string"/>
+          <xs:element minOccurs="0" name="Surname" type="xs:string"/>
+          <xs:element minOccurs="0" name="FirstName" type="xs:string"/>
+          <xs:element minOccurs="0" name="MiddleName" type="xs:string"/>
+          <xs:element minOccurs="0" name="HomeAddress1" type="xs:string"/>
+          <xs:element minOccurs="0" name="HomeAddress2" type="xs:string"/>
+          <xs:element minOccurs="0" name="HomeAddress3" type="xs:string"/>
+          <xs:element minOccurs="0" name="HomeAddress4" type="xs:string"/>
+          <xs:element minOccurs="0" name="HomeAddress5" type="xs:string"/>
+          <xs:element minOccurs="0" name="HomeAddress6" type="xs:string"/>
+          <xs:element minOccurs="0" name="HomePostcode" type="xs:string"/>
+          <xs:element minOccurs="0" name="HomePhoneNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="MobilePhoneNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="CompanyPhoneNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField1" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField2" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField3" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField4" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField5" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField6" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField7" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField8" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField9" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField10" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="typeUser">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Category" type="xs:string"/>
+          <xs:element minOccurs="0" name="IdNumber1" type="xs:string"/>
+          <xs:element minOccurs="0" name="IdNumber2" type="xs:string"/>
+          <xs:element minOccurs="0" name="IdNumber3" type="xs:string"/>
+          <xs:element minOccurs="0" name="Surname" type="xs:string"/>
+          <xs:element minOccurs="0" name="FirstName" type="xs:string"/>
+          <xs:element minOccurs="0" name="MiddleName" type="xs:string"/>
+          <xs:element minOccurs="0" name="Sex" type="xs:string"/>
+          <xs:element minOccurs="0" name="DateOfBirth" type="xs:string"/>
+          <xs:element minOccurs="0" name="HomeAddress1" type="xs:string"/>
+          <xs:element minOccurs="0" name="HomeAddress2" type="xs:string"/>
+          <xs:element minOccurs="0" name="HomeAddress3" type="xs:string"/>
+          <xs:element minOccurs="0" name="HomeAddress4" type="xs:string"/>
+          <xs:element minOccurs="0" name="HomeAddress5" type="xs:string"/>
+          <xs:element minOccurs="0" name="HomeAddress6" type="xs:string"/>
+          <xs:element minOccurs="0" name="HomePostcode" type="xs:string"/>
+          <xs:element minOccurs="0" name="HomePhoneNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="MobilePhoneNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="CompanyName" type="xs:string"/>
+          <xs:element minOccurs="0" name="CompanyAddress1" type="xs:string"/>
+          <xs:element minOccurs="0" name="CompanyAddress2" type="xs:string"/>
+          <xs:element minOccurs="0" name="CompanyAddress3" type="xs:string"/>
+          <xs:element minOccurs="0" name="CompanyAddress4" type="xs:string"/>
+          <xs:element minOccurs="0" name="CompanyAddress5" type="xs:string"/>
+          <xs:element minOccurs="0" name="CompanyAddress6" type="xs:string"/>
+          <xs:element minOccurs="0" name="CompanyPostcode" type="xs:string"/>
+          <xs:element minOccurs="0" name="CompanyPhoneNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField1" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField2" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField3" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField4" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField5" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField6" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField7" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField8" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField9" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField10" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="typeUser2">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Code" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField1" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField2" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField3" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField4" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField5" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField6" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField7" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField8" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField9" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField10" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField11" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField12" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField13" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField14" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField15" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField16" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField17" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField18" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField19" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField20" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField21" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField22" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField23" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField24" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField25" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField26" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField27" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField28" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField29" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField30" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField31" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField32" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField33" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField34" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField35" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField36" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField37" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField38" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField39" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField40" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField41" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField42" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField43" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField44" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField45" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField46" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField47" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField48" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField49" type="xs:string"/>
+          <xs:element minOccurs="0" name="UserField50" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="inquiryKycOutputSchema">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ApplicantNTB" type="xs:string"/>
+          <xs:element minOccurs="0" name="SpouseNTB" type="xs:string"/>
+          <xs:element minOccurs="0" name="EKTPandSelfieSpouse" type="xs:string"/>
+          <xs:element minOccurs="0" name="SpouseNIK" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="inquiryNibcOutputSchema">
+        <xs:sequence>
+          <xs:element name="isMarried" type="xs:string"/>
+          <xs:element name="isPrenup" type="xs:string"/>
+          <xs:element name="isJointIncome" type="xs:string"/>
+          <xs:element name="isApplicantSelfEmployee" type="xs:string"/>
+          <xs:element name="isSpouseSelfEmployee" type="xs:string"/>
+          <xs:element name="nibApplicant" type="xs:string"/>
+          <xs:element name="namaUsahaApplicant" type="xs:string"/>
+          <xs:element name="refNoApplicant" type="xs:string"/>
+          <xs:element name="nibSpouse" type="xs:string"/>
+          <xs:element name="namaUsahaSpouse" type="xs:string"/>
+          <xs:element name="refNoSpouse" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getDataNotifAIPStatusOutputSchema">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="gcnNo" type="xs:string"/>
+          <xs:element minOccurs="0" name="flowId" type="xs:string"/>
+          <xs:element minOccurs="0" name="instanceId" type="xs:string"/>
+          <xs:element minOccurs="0" name="applicationDate" type="xs:string"/>
+          <xs:element minOccurs="0" name="appId" type="xs:string"/>
+          <xs:element minOccurs="0" name="statusApplication" type="xs:string"/>
+          <xs:element minOccurs="0" name="productCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="applicantName" type="xs:string"/>
+          <xs:element minOccurs="0" name="approvalDetail" type="xs:string"/>
+          <xs:element minOccurs="0" name="downPayment" type="xs:string"/>
+          <xs:element minOccurs="0" name="plafon" type="xs:string"/>
+          <xs:element minOccurs="0" name="tenor" type="xs:string"/>
+          <xs:element minOccurs="0" name="interestFixedPrimary" type="xs:string"/>
+          <xs:element minOccurs="0" name="interestTenorPrimary" type="xs:string"/>
+          <xs:element minOccurs="0" name="interestFixed" type="xs:string"/>
+          <xs:element minOccurs="0" name="interestTenor" type="xs:string"/>
+          <xs:element minOccurs="0" name="installment" type="xs:string"/>
+          <xs:element minOccurs="0" name="salesType" type="xs:string"/>
+          <xs:element minOccurs="0" name="typeProperty" type="xs:string"/>
+          <xs:element minOccurs="0" name="subProjectName" type="xs:string"/>
+          <xs:element minOccurs="0" name="subProjectCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="projectName" type="xs:string"/>
+          <xs:element minOccurs="0" name="projectCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="developerGroupName" type="xs:string"/>
+          <xs:element minOccurs="0" name="developerGroupCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="subProjectCity" type="xs:string"/>
+          <xs:element minOccurs="0" name="codeDevleoper" type="xs:string"/>
+          <xs:element minOccurs="0" name="propertyPrice" type="xs:string"/>
+          <xs:element minOccurs="0" name="incomeDetail" type="xs:string"/>
+          <xs:element minOccurs="0" name="applicantIncome" type="xs:string"/>
+          <xs:element minOccurs="0" name="applicantSpouseIncome" type="xs:string"/>
+          <xs:element minOccurs="0" name="missingDocs" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="inquiryPefindoOutputSchema">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="reffNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="idReg" type="xs:string"/>
+          <xs:element minOccurs="0" name="statusApp" type="xs:string"/>
+          <xs:element minOccurs="0" name="name" type="xs:string"/>
+          <xs:element minOccurs="0" name="dob" type="xs:string"/>
+          <xs:element minOccurs="0" name="ktp" type="xs:string"/>
+          <xs:element minOccurs="0" name="npwp" type="xs:string"/>
+          <xs:element minOccurs="0" name="bornPlace" type="xs:string"/>
+          <xs:element minOccurs="0" name="phoneNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="mobileNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="ktpAddress_1" type="xs:string"/>
+          <xs:element minOccurs="0" name="ktpAddress_2" type="xs:string"/>
+          <xs:element minOccurs="0" name="ktpAddress_3" type="xs:string"/>
+          <xs:element minOccurs="0" name="ktpAddress_city" type="xs:string"/>
+          <xs:element minOccurs="0" name="ktpAddress_zipcode" type="xs:string"/>
+          <xs:element minOccurs="0" name="domAddr_1" type="xs:string"/>
+          <xs:element minOccurs="0" name="domAddr_2" type="xs:string"/>
+          <xs:element minOccurs="0" name="domAddr_3" type="xs:string"/>
+          <xs:element minOccurs="0" name="domAddr_city" type="xs:string"/>
+          <xs:element minOccurs="0" name="domAddr_zipcode" type="xs:string"/>
+          <xs:element minOccurs="0" name="officeName" type="xs:string"/>
+          <xs:element minOccurs="0" name="officeAddr_1" type="xs:string"/>
+          <xs:element minOccurs="0" name="officeAddr_2" type="xs:string"/>
+          <xs:element minOccurs="0" name="officeAddr_3" type="xs:string"/>
+          <xs:element minOccurs="0" name="officeAddr_city" type="xs:string"/>
+          <xs:element minOccurs="0" name="officeAddr_zipcode" type="xs:string"/>
+          <xs:element minOccurs="0" name="kodereffpengguna" type="xs:string"/>
+          <xs:element minOccurs="0" name="employeeType" type="xs:string"/>
+          <xs:element minOccurs="0" name="custSegment" type="xs:string"/>
+          <xs:element minOccurs="0" name="collateral" type="xs:string"/>
+          <xs:element minOccurs="0" name="collateralLtv" type="xs:string"/>
+          <xs:element minOccurs="0" name="perusahaan" type="xs:string"/>
+          <xs:element minOccurs="0" name="mscCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="officePhone" type="xs:string"/>
+          <xs:element minOccurs="0" name="occupation" type="xs:string"/>
+          <xs:element minOccurs="0" name="billingAddress" type="xs:string"/>
+          <xs:element minOccurs="0" name="plafon" type="xs:string"/>
+          <xs:element minOccurs="0" name="tenor" type="xs:string"/>
+          <xs:element minOccurs="0" name="interest" type="xs:string"/>
+          <xs:element minOccurs="0" name="homeStatus" type="xs:string"/>
+          <xs:element minOccurs="0" name="jenisKelamin" type="xs:string"/>
+          <xs:element minOccurs="0" name="tempatPendirian" type="xs:string"/>
+          <xs:element minOccurs="0" name="mmn" type="xs:string"/>
+          <xs:element minOccurs="0" name="requestType" type="xs:string"/>
+          <xs:element minOccurs="0" name="inquiryReason" type="xs:string"/>
+          <xs:element minOccurs="0" name="inquiryReasonText" type="xs:string"/>
+          <xs:element minOccurs="0" name="isMarried" type="xs:string"/>
+          <xs:element minOccurs="0" name="selfEmployed" type="xs:string"/>
+          <xs:element minOccurs="0" name="spouseSelfEmployed" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="processPefindoOutputSchema">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="field1" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="typeAddress">
+        <xs:sequence>
+          <xs:element name="address1" type="xs:string"/>
+          <xs:element name="address2" type="xs:string"/>
+          <xs:element name="RTRW" type="xs:string"/>
+          <xs:element name="village" type="xs:string"/>
+          <xs:element name="subDistrict" type="xs:string"/>
+          <xs:element name="city" type="xs:string"/>
+          <xs:element name="district" type="xs:string"/>
+          <xs:element name="zipCode" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="submissionForBPMOutputSchema">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="applicationNo" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getApplicationPararelTaskListOutputSchema">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="TaskList" nillable="true" type="tns:typeTaskList1"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="typeTaskList1">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Task" nillable="true" type="tns:typeTask1"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="typeTask1">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="workflowData" nillable="true" type="tns:typeWorkFlowData1"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="typeWorkFlowData1">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="appId" type="xs:string"/>
+          <xs:element minOccurs="0" name="flowId" type="xs:string"/>
+          <xs:element minOccurs="0" name="stagesCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="stages" type="xs:string"/>
+          <xs:element minOccurs="0" name="productCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="isSyariah" type="xs:string"/>
+          <xs:element minOccurs="0" name="status" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getApplicationTaskListOutputSchema">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Stages" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="TaskList" nillable="true" type="tns:typeTaskList"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="applicationData" nillable="true" type="tns:typeApplicationDataList"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="typeTaskList">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Task" nillable="true" type="tns:typeTask"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="typeTask">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="workflowData" nillable="true" type="tns:typeWorkFlowData"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="typeWorkFlowData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="TaskId" type="xs:string"/>
+          <xs:element minOccurs="0" name="AssignedDate" type="xs:string"/>
+          <xs:element minOccurs="0" name="FlowId" type="xs:string"/>
+          <xs:element minOccurs="0" name="StagesCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="State" type="xs:string"/>
+          <xs:element minOccurs="0" name="AcquiredBy" type="xs:string"/>
+          <xs:element minOccurs="0" name="FromUser" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="typeApplicationDataList">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ApplicationName" type="xs:string"/>
+          <xs:element minOccurs="0" name="MobileNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="AppId" type="xs:string"/>
+          <xs:element minOccurs="0" name="NIK" type="xs:string"/>
+          <xs:element minOccurs="0" name="IsSyariah" type="xs:string"/>
+          <xs:element minOccurs="0" name="ProductCode" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="typeAssignToNPKList">
+        <xs:sequence>
+          <xs:element name="NPK" type="xs:string"/>
+          <xs:element name="Action" type="xs:string"/>
+          <xs:element name="TaskId" type="xs:string"/>
+          <xs:element name="AppId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getAMLResultReviewOutputSchema">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="isBlackList" type="xs:string"/>
+          <xs:element minOccurs="0" name="isRecommendation" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="GetReferralRequest">
+    <wsdl:part element="tns:GetReferralRequest" name="GetReferralRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SubmitApplicationTaskAMLRecomendSubmissionRequest">
+    <wsdl:part element="tns:SubmitApplicationTaskAMLRecomendSubmissionRequest" name="SubmitApplicationTaskAMLRecomendSubmissionRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InquiryWealthRequest">
+    <wsdl:part element="tns:InquiryWealthRequest" name="InquiryWealthRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InquiryPefindoRequest">
+    <wsdl:part element="tns:InquiryPefindoRequest" name="InquiryPefindoRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ProcessPefindoRequest">
+    <wsdl:part element="tns:ProcessPefindoRequest" name="ProcessPefindoRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SaveWorkflowHeaderBpmResponse">
+    <wsdl:part element="tns:SaveWorkflowHeaderBpmResponse" name="SaveWorkflowHeaderBpmResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AssignApplicationTaskResponse">
+    <wsdl:part element="tns:AssignApplicationTaskResponse" name="AssignApplicationTaskResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SubmitApplicationTaskAndAssignResponse">
+    <wsdl:part element="tns:SubmitApplicationTaskAndAssignResponse" name="SubmitApplicationTaskAndAssignResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetBusinessEntityResponse">
+    <wsdl:part element="tns:GetBusinessEntityResponse" name="GetBusinessEntityResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetBuildingStatusResponse">
+    <wsdl:part element="tns:GetBuildingStatusResponse" name="GetBuildingStatusResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InquiryNibcRequest">
+    <wsdl:part element="tns:InquiryNibcRequest" name="InquiryNibcRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetBuildingStatusRequest">
+    <wsdl:part element="tns:GetBuildingStatusRequest" name="GetBuildingStatusRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ProcessAmlRequest">
+    <wsdl:part element="tns:ProcessAmlRequest" name="ProcessAmlRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ProcessPefindoResponse">
+    <wsdl:part element="tns:ProcessPefindoResponse" name="ProcessPefindoResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InquiryAmlProcessRequest">
+    <wsdl:part element="tns:InquiryAmlProcessRequest" name="InquiryAmlProcessRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InquiryKycResponse">
+    <wsdl:part element="tns:InquiryKycResponse" name="InquiryKycResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InquiryAmlockResponse">
+    <wsdl:part element="tns:InquiryAmlockResponse" name="InquiryAmlockResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SaveWorkflowDetailBpmRequest">
+    <wsdl:part element="tns:SaveWorkflowDetailBpmRequest" name="SaveWorkflowDetailBpmRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InquiryKycRequest">
+    <wsdl:part element="tns:InquiryKycRequest" name="InquiryKycRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InquiryInstinctRequest">
+    <wsdl:part element="tns:InquiryInstinctRequest" name="InquiryInstinctRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SaveAmlRecomendationResponse">
+    <wsdl:part element="tns:SaveAmlRecomendationResponse" name="SaveAmlRecomendationResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ProcessAmlResponse">
+    <wsdl:part element="tns:ProcessAmlResponse" name="ProcessAmlResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InquiryIncomeResponse">
+    <wsdl:part element="tns:InquiryIncomeResponse" name="InquiryIncomeResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetReferralResponse">
+    <wsdl:part element="tns:GetReferralResponse" name="GetReferralResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InquiryIncomeRequest">
+    <wsdl:part element="tns:InquiryIncomeRequest" name="InquiryIncomeRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDataNotifAIPStatusRequest">
+    <wsdl:part element="tns:getDataNotifAIPStatusRequest" name="getDataNotifAIPStatusRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAMLResultReviewResponse">
+    <wsdl:part element="tns:getAMLResultReviewResponse" name="getAMLResultReviewResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getApplicationExistingMortgageRequest">
+    <wsdl:part element="tns:getApplicationExistingMortgageRequest" name="getApplicationExistingMortgageRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDataNotifAIPStatusResponse">
+    <wsdl:part element="tns:getDataNotifAIPStatusResponse" name="getDataNotifAIPStatusResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getApplicationExistingMortgageResponse">
+    <wsdl:part element="tns:getApplicationExistingMortgageResponse" name="getApplicationExistingMortgageResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ReAssignApplicationTaskResponse">
+    <wsdl:part element="tns:ReAssignApplicationTaskResponse" name="ReAssignApplicationTaskResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="submissionForBPMRequest">
+    <wsdl:part element="tns:submissionForBPMRequest" name="submissionForBPMRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetApplicationTaskListResponse">
+    <wsdl:part element="tns:GetApplicationTaskListResponse" name="GetApplicationTaskListResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetApplicationPararelTaskListResponse">
+    <wsdl:part element="tns:GetApplicationPararelTaskListResponse" name="GetApplicationPararelTaskListResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InquiryInstinctResponse">
+    <wsdl:part element="tns:InquiryInstinctResponse" name="InquiryInstinctResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SubmitApplicationTaskAMLRecomendSubmissionResponse">
+    <wsdl:part element="tns:SubmitApplicationTaskAMLRecomendSubmissionResponse" name="SubmitApplicationTaskAMLRecomendSubmissionResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InquiryWealthResponse">
+    <wsdl:part element="tns:InquiryWealthResponse" name="InquiryWealthResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SubmitApplicationTaskAndAssignRequest">
+    <wsdl:part element="tns:SubmitApplicationTaskAndAssignRequest" name="SubmitApplicationTaskAndAssignRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SaveWorkflowHeaderBpmRequest">
+    <wsdl:part element="tns:SaveWorkflowHeaderBpmRequest" name="SaveWorkflowHeaderBpmRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAMLResultReviewRequest">
+    <wsdl:part element="tns:getAMLResultReviewRequest" name="getAMLResultReviewRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InquiryAmlProcessResponse">
+    <wsdl:part element="tns:InquiryAmlProcessResponse" name="InquiryAmlProcessResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SubmitApplicationTaskRequest">
+    <wsdl:part element="tns:SubmitApplicationTaskRequest" name="SubmitApplicationTaskRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetApplicationPararelTaskListRequest">
+    <wsdl:part element="tns:GetApplicationPararelTaskListRequest" name="GetApplicationPararelTaskListRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InquiryDataHumanTaskRequest">
+    <wsdl:part element="tns:InquiryDataHumanTaskRequest" name="InquiryDataHumanTaskRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetLovParamsRequest">
+    <wsdl:part element="tns:GetLovParamsRequest" name="GetLovParamsRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InquiryDataHumanTaskResponse">
+    <wsdl:part element="tns:InquiryDataHumanTaskResponse" name="InquiryDataHumanTaskResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetApplicationTaskListRequest">
+    <wsdl:part element="tns:GetApplicationTaskListRequest" name="GetApplicationTaskListRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SaveWorkflowDetailBpmResponse">
+    <wsdl:part element="tns:SaveWorkflowDetailBpmResponse" name="SaveWorkflowDetailBpmResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SubmitApplicationTaskResponse">
+    <wsdl:part element="tns:SubmitApplicationTaskResponse" name="SubmitApplicationTaskResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InquiryPefindoResponse">
+    <wsdl:part element="tns:InquiryPefindoResponse" name="InquiryPefindoResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="submissionForBPMResponse">
+    <wsdl:part element="tns:submissionForBPMResponse" name="submissionForBPMResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetLovParamsResponse">
+    <wsdl:part element="tns:GetLovParamsResponse" name="GetLovParamsResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SaveAmlRecomendationRequest">
+    <wsdl:part element="tns:SaveAmlRecomendationRequest" name="SaveAmlRecomendationRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InquiryNibcResponse">
+    <wsdl:part element="tns:InquiryNibcResponse" name="InquiryNibcResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ReAssignApplicationTaskRequest">
+    <wsdl:part element="tns:ReAssignApplicationTaskRequest" name="ReAssignApplicationTaskRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AssignApplicationTaskRequest">
+    <wsdl:part element="tns:AssignApplicationTaskRequest" name="AssignApplicationTaskRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InquiryAmlockRequest">
+    <wsdl:part element="tns:InquiryAmlockRequest" name="InquiryAmlockRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetBusinessEntityRequest">
+    <wsdl:part element="tns:GetBusinessEntityRequest" name="GetBusinessEntityRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="Mortgage">
+    <wsdl:operation name="GetReferral">
+      <wsdl:input message="tns:GetReferralRequest" name="GetReferralRequest"></wsdl:input>
+      <wsdl:output message="tns:GetReferralResponse" name="GetReferralResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitApplicationTaskAMLRecomendSubmission">
+      <wsdl:input message="tns:SubmitApplicationTaskAMLRecomendSubmissionRequest" name="SubmitApplicationTaskAMLRecomendSubmissionRequest"></wsdl:input>
+      <wsdl:output message="tns:SubmitApplicationTaskAMLRecomendSubmissionResponse" name="SubmitApplicationTaskAMLRecomendSubmissionResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InquiryWealth">
+      <wsdl:input message="tns:InquiryWealthRequest" name="InquiryWealthRequest"></wsdl:input>
+      <wsdl:output message="tns:InquiryWealthResponse" name="InquiryWealthResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InquiryPefindo">
+      <wsdl:input message="tns:InquiryPefindoRequest" name="InquiryPefindoRequest"></wsdl:input>
+      <wsdl:output message="tns:InquiryPefindoResponse" name="InquiryPefindoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessPefindo">
+      <wsdl:input message="tns:ProcessPefindoRequest" name="ProcessPefindoRequest"></wsdl:input>
+      <wsdl:output message="tns:ProcessPefindoResponse" name="ProcessPefindoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveWorkflowHeaderBpm">
+      <wsdl:input message="tns:SaveWorkflowHeaderBpmRequest" name="SaveWorkflowHeaderBpmRequest"></wsdl:input>
+      <wsdl:output message="tns:SaveWorkflowHeaderBpmResponse" name="SaveWorkflowHeaderBpmResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AssignApplicationTask">
+      <wsdl:input message="tns:AssignApplicationTaskRequest" name="AssignApplicationTaskRequest"></wsdl:input>
+      <wsdl:output message="tns:AssignApplicationTaskResponse" name="AssignApplicationTaskResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitApplicationTaskAndAssign">
+      <wsdl:input message="tns:SubmitApplicationTaskAndAssignRequest" name="SubmitApplicationTaskAndAssignRequest"></wsdl:input>
+      <wsdl:output message="tns:SubmitApplicationTaskAndAssignResponse" name="SubmitApplicationTaskAndAssignResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBusinessEntity">
+      <wsdl:input message="tns:GetBusinessEntityRequest" name="GetBusinessEntityRequest"></wsdl:input>
+      <wsdl:output message="tns:GetBusinessEntityResponse" name="GetBusinessEntityResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBuildingStatus">
+      <wsdl:input message="tns:GetBuildingStatusRequest" name="GetBuildingStatusRequest"></wsdl:input>
+      <wsdl:output message="tns:GetBuildingStatusResponse" name="GetBuildingStatusResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InquiryNibc">
+      <wsdl:input message="tns:InquiryNibcRequest" name="InquiryNibcRequest"></wsdl:input>
+      <wsdl:output message="tns:InquiryNibcResponse" name="InquiryNibcResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessAml">
+      <wsdl:input message="tns:ProcessAmlRequest" name="ProcessAmlRequest"></wsdl:input>
+      <wsdl:output message="tns:ProcessAmlResponse" name="ProcessAmlResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InquiryAmlProcess">
+      <wsdl:input message="tns:InquiryAmlProcessRequest" name="InquiryAmlProcessRequest"></wsdl:input>
+      <wsdl:output message="tns:InquiryAmlProcessResponse" name="InquiryAmlProcessResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InquiryKyc">
+      <wsdl:input message="tns:InquiryKycRequest" name="InquiryKycRequest"></wsdl:input>
+      <wsdl:output message="tns:InquiryKycResponse" name="InquiryKycResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InquiryAmlock">
+      <wsdl:input message="tns:InquiryAmlockRequest" name="InquiryAmlockRequest"></wsdl:input>
+      <wsdl:output message="tns:InquiryAmlockResponse" name="InquiryAmlockResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveWorkflowDetailBpm">
+      <wsdl:input message="tns:SaveWorkflowDetailBpmRequest" name="SaveWorkflowDetailBpmRequest"></wsdl:input>
+      <wsdl:output message="tns:SaveWorkflowDetailBpmResponse" name="SaveWorkflowDetailBpmResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InquiryInstinct">
+      <wsdl:input message="tns:InquiryInstinctRequest" name="InquiryInstinctRequest"></wsdl:input>
+      <wsdl:output message="tns:InquiryInstinctResponse" name="InquiryInstinctResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveAmlRecomendation">
+      <wsdl:input message="tns:SaveAmlRecomendationRequest" name="SaveAmlRecomendationRequest"></wsdl:input>
+      <wsdl:output message="tns:SaveAmlRecomendationResponse" name="SaveAmlRecomendationResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InquiryIncome">
+      <wsdl:input message="tns:InquiryIncomeRequest" name="InquiryIncomeRequest"></wsdl:input>
+      <wsdl:output message="tns:InquiryIncomeResponse" name="InquiryIncomeResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDataNotifAIPStatus">
+      <wsdl:input message="tns:getDataNotifAIPStatusRequest" name="getDataNotifAIPStatusRequest"></wsdl:input>
+      <wsdl:output message="tns:getDataNotifAIPStatusResponse" name="getDataNotifAIPStatusResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAMLResultReview">
+      <wsdl:input message="tns:getAMLResultReviewRequest" name="getAMLResultReviewRequest"></wsdl:input>
+      <wsdl:output message="tns:getAMLResultReviewResponse" name="getAMLResultReviewResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getApplicationExistingMortgage">
+      <wsdl:input message="tns:getApplicationExistingMortgageRequest" name="getApplicationExistingMortgageRequest"></wsdl:input>
+      <wsdl:output message="tns:getApplicationExistingMortgageResponse" name="getApplicationExistingMortgageResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReAssignApplicationTask">
+      <wsdl:input message="tns:ReAssignApplicationTaskRequest" name="ReAssignApplicationTaskRequest"></wsdl:input>
+      <wsdl:output message="tns:ReAssignApplicationTaskResponse" name="ReAssignApplicationTaskResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submissionForBPM">
+      <wsdl:input message="tns:submissionForBPMRequest" name="submissionForBPMRequest"></wsdl:input>
+      <wsdl:output message="tns:submissionForBPMResponse" name="submissionForBPMResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetApplicationTaskList">
+      <wsdl:input message="tns:GetApplicationTaskListRequest" name="GetApplicationTaskListRequest"></wsdl:input>
+      <wsdl:output message="tns:GetApplicationTaskListResponse" name="GetApplicationTaskListResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetApplicationPararelTaskList">
+      <wsdl:input message="tns:GetApplicationPararelTaskListRequest" name="GetApplicationPararelTaskListRequest"></wsdl:input>
+      <wsdl:output message="tns:GetApplicationPararelTaskListResponse" name="GetApplicationPararelTaskListResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitApplicationTask">
+      <wsdl:input message="tns:SubmitApplicationTaskRequest" name="SubmitApplicationTaskRequest"></wsdl:input>
+      <wsdl:output message="tns:SubmitApplicationTaskResponse" name="SubmitApplicationTaskResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InquiryDataHumanTask">
+      <wsdl:input message="tns:InquiryDataHumanTaskRequest" name="InquiryDataHumanTaskRequest"></wsdl:input>
+      <wsdl:output message="tns:InquiryDataHumanTaskResponse" name="InquiryDataHumanTaskResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLovParams">
+      <wsdl:input message="tns:GetLovParamsRequest" name="GetLovParamsRequest"></wsdl:input>
+      <wsdl:output message="tns:GetLovParamsResponse" name="GetLovParamsResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MortgageSoap11" type="tns:Mortgage">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetReferral">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetReferralRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetReferralResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitApplicationTaskAMLRecomendSubmission">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="SubmitApplicationTaskAMLRecomendSubmissionRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="SubmitApplicationTaskAMLRecomendSubmissionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InquiryWealth">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="InquiryWealthRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="InquiryWealthResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InquiryPefindo">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="InquiryPefindoRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="InquiryPefindoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessPefindo">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="ProcessPefindoRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ProcessPefindoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveWorkflowHeaderBpm">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="SaveWorkflowHeaderBpmRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="SaveWorkflowHeaderBpmResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AssignApplicationTask">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AssignApplicationTaskRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AssignApplicationTaskResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitApplicationTaskAndAssign">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="SubmitApplicationTaskAndAssignRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="SubmitApplicationTaskAndAssignResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBusinessEntity">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetBusinessEntityRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetBusinessEntityResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBuildingStatus">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetBuildingStatusRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetBuildingStatusResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InquiryNibc">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="InquiryNibcRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="InquiryNibcResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessAml">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="ProcessAmlRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ProcessAmlResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InquiryAmlProcess">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="InquiryAmlProcessRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="InquiryAmlProcessResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InquiryKyc">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="InquiryKycRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="InquiryKycResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InquiryAmlock">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="InquiryAmlockRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="InquiryAmlockResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveWorkflowDetailBpm">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="SaveWorkflowDetailBpmRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="SaveWorkflowDetailBpmResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InquiryInstinct">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="InquiryInstinctRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="InquiryInstinctResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveAmlRecomendation">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="SaveAmlRecomendationRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="SaveAmlRecomendationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InquiryIncome">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="InquiryIncomeRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="InquiryIncomeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDataNotifAIPStatus">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getDataNotifAIPStatusRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDataNotifAIPStatusResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAMLResultReview">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getAMLResultReviewRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAMLResultReviewResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getApplicationExistingMortgage">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getApplicationExistingMortgageRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getApplicationExistingMortgageResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReAssignApplicationTask">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="ReAssignApplicationTaskRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ReAssignApplicationTaskResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submissionForBPM">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="submissionForBPMRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="submissionForBPMResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetApplicationTaskList">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetApplicationTaskListRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetApplicationTaskListResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetApplicationPararelTaskList">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetApplicationPararelTaskListRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetApplicationPararelTaskListResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitApplicationTask">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="SubmitApplicationTaskRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="SubmitApplicationTaskResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InquiryDataHumanTask">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="InquiryDataHumanTaskRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="InquiryDataHumanTaskResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLovParams">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetLovParamsRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetLovParamsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MortgageService">
+    <wsdl:port binding="tns:MortgageSoap11" name="MortgageSoap11">
+      <soap:address location="http://10.102.3.47:8004/be-mortgage/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://10.102.3.47:8004/be-mortgage/ws</con:endpoint></con:endpoints><con:operation id="9138fb1c-1dbe-43f6-b22b-6f245e79e412" isOneWay="false" action="" name="AssignApplicationTask" bindingOperationName="AssignApplicationTask" type="Request-Response" outputName="AssignApplicationTaskResponse" inputName="AssignApplicationTaskRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="4a113e23-d20e-4a08-8332-e2e9de49645a" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.102.3.47:8004/be-mortgage/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:alp="http://www.alpabit.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <alp:AssignApplicationTaskRequest>\r
+         <alp:NPK>?</alp:NPK>\r
+         <alp:TaskId>?</alp:TaskId>\r
+         <alp:AppId>?</alp:AppId>\r
+      </alp:AssignApplicationTaskRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.alpabit.com/Mortgage/AssignApplicationTaskRequest"/></con:call></con:operation><con:operation id="d9739dc5-5821-49ed-947a-5c58494298fd" isOneWay="false" action="" name="getAMLResultReview" bindingOperationName="getAMLResultReview" type="Request-Response" outputName="getAMLResultReviewResponse" inputName="getAMLResultReviewRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="db6da912-5146-439e-835e-85981d87de84" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.102.3.47:8004/be-mortgage/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:alp="http://www.alpabit.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <alp:getAMLResultReviewRequest>\r
+         <alp:appNo>?</alp:appNo>\r
+      </alp:getAMLResultReviewRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.alpabit.com/Mortgage/getAMLResultReviewRequest"/></con:call></con:operation><con:operation id="95893da7-7210-4245-81a4-879583272298" isOneWay="false" action="" name="getApplicationExistingMortgage" bindingOperationName="getApplicationExistingMortgage" type="Request-Response" outputName="getApplicationExistingMortgageResponse" inputName="getApplicationExistingMortgageRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f021bfd4-9338-41fa-8286-a932046dd500" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.102.3.47:8004/be-mortgage/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:alp="http://www.alpabit.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <alp:getApplicationExistingMortgageRequest>\r
+         <alp:idNo>?</alp:idNo>\r
+         <alp:idType>?</alp:idType>\r
+      </alp:getApplicationExistingMortgageRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.alpabit.com/Mortgage/getApplicationExistingMortgageRequest"/></con:call></con:operation><con:operation id="13e2c25c-9d5a-41d8-bc3c-f948e4360e86" isOneWay="false" action="" name="GetApplicationPararelTaskList" bindingOperationName="GetApplicationPararelTaskList" type="Request-Response" outputName="GetApplicationPararelTaskListResponse" inputName="GetApplicationPararelTaskListRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="be23fcb2-3ccc-40fe-a3a7-91498605f39c" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.102.3.47:8004/be-mortgage/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:alp="http://www.alpabit.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <alp:GetApplicationPararelTaskListRequest>\r
+         <alp:NPK>?</alp:NPK>\r
+         <alp:Stage>?</alp:Stage>\r
+         <alp:appId>?</alp:appId>\r
+      </alp:GetApplicationPararelTaskListRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.alpabit.com/Mortgage/GetApplicationPararelTaskListRequest"/></con:call></con:operation><con:operation id="4724ac5f-0648-4f62-941d-675701bb82db" isOneWay="false" action="" name="GetApplicationTaskList" bindingOperationName="GetApplicationTaskList" type="Request-Response" outputName="GetApplicationTaskListResponse" inputName="GetApplicationTaskListRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="10c62934-2949-44a1-8a31-0ace06144d78" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.102.3.47:8004/be-mortgage/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:alp="http://www.alpabit.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <alp:GetApplicationTaskListRequest>\r
+         <alp:NPK>?</alp:NPK>\r
+         <alp:AssignmentFilter>?</alp:AssignmentFilter>\r
+         <alp:StartPage>?</alp:StartPage>\r
+         <alp:EndPage>?</alp:EndPage>\r
+      </alp:GetApplicationTaskListRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.alpabit.com/Mortgage/GetApplicationTaskListRequest"/></con:call></con:operation><con:operation id="4510fdaf-f82a-4be1-8aba-6a5681485d5f" isOneWay="false" action="" name="GetBuildingStatus" bindingOperationName="GetBuildingStatus" type="Request-Response" outputName="GetBuildingStatusResponse" inputName="GetBuildingStatusRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="0ba722ab-2fd9-4cf7-805f-9ccca83cd4a1" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.102.3.47:8004/be-mortgage/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:alp="http://www.alpabit.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <alp:GetBuildingStatusRequest>\r
+         <alp:requestType>?</alp:requestType>\r
+      </alp:GetBuildingStatusRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.alpabit.com/Mortgage/GetBuildingStatusRequest"/></con:call></con:operation><con:operation id="513fda99-19ca-43e4-bd31-97ced77d72df" isOneWay="false" action="" name="GetBusinessEntity" bindingOperationName="GetBusinessEntity" type="Request-Response" outputName="GetBusinessEntityResponse" inputName="GetBusinessEntityRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="2bfb93d7-6048-4366-b787-166e130e8eb3" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.102.3.47:8004/be-mortgage/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:alp="http://www.alpabit.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <alp:GetBusinessEntityRequest>\r
+         <alp:requestType>?</alp:requestType>\r
+      </alp:GetBusinessEntityRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.alpabit.com/Mortgage/GetBusinessEntityRequest"/></con:call></con:operation><con:operation id="d0c011ff-b5b0-4adc-95f5-7d3ec829bef5" isOneWay="false" action="" name="getDataNotifAIPStatus" bindingOperationName="getDataNotifAIPStatus" type="Request-Response" outputName="getDataNotifAIPStatusResponse" inputName="getDataNotifAIPStatusRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="dc226e9f-7dd0-4e91-b9b4-29808da58a2d" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.102.3.47:8004/be-mortgage/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:alp="http://www.alpabit.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <alp:getDataNotifAIPStatusRequest>\r
+         <alp:appNo>?</alp:appNo>\r
+         <alp:workflowId>?</alp:workflowId>\r
+      </alp:getDataNotifAIPStatusRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.alpabit.com/Mortgage/getDataNotifAIPStatusRequest"/></con:call></con:operation><con:operation id="bb775db2-42d2-4c76-8fe5-f54a6684f9c7" isOneWay="false" action="" name="GetLovParams" bindingOperationName="GetLovParams" type="Request-Response" outputName="GetLovParamsResponse" inputName="GetLovParamsRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="8e657ffb-ae35-4003-9dc8-6a8ae8101fa0" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.102.3.47:8004/be-mortgage/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:alp="http://www.alpabit.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <alp:GetLovParamsRequest>\r
+         <alp:keyGroup>?</alp:keyGroup>\r
+      </alp:GetLovParamsRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.alpabit.com/Mortgage/GetLovParamsRequest"/></con:call></con:operation><con:operation id="73ab5912-f9c6-4401-8ec2-83e8bd886e93" isOneWay="false" action="" name="GetReferral" bindingOperationName="GetReferral" type="Request-Response" outputName="GetReferralResponse" inputName="GetReferralRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="942c1dd8-046c-4010-a030-9d03cb573ef2" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.102.3.47:8004/be-mortgage/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:alp="http://www.alpabit.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <alp:GetReferralRequest>\r
+         <alp:requestType>?</alp:requestType>\r
+      </alp:GetReferralRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.alpabit.com/Mortgage/GetReferralRequest"/></con:call></con:operation><con:operation id="a5171671-4e67-484e-869b-c3c4a789c1a1" isOneWay="false" action="" name="InquiryAmlock" bindingOperationName="InquiryAmlock" type="Request-Response" outputName="InquiryAmlockResponse" inputName="InquiryAmlockRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="17781aaf-6b9c-422d-bbd9-5c58bc61a7a9" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.102.3.47:8004/be-mortgage/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:alp="http://www.alpabit.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <alp:InquiryAmlockRequest>\r
+         <alp:requestUuid>?</alp:requestUuid>\r
+         <alp:traceNo>?</alp:traceNo>\r
+         <alp:applicationNo>?</alp:applicationNo>\r
+         <alp:nik>?</alp:nik>\r
+      </alp:InquiryAmlockRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.alpabit.com/Mortgage/InquiryAmlockRequest"/></con:call></con:operation><con:operation id="4965c3f8-a6dc-488f-baa1-feb173ac80f1" isOneWay="false" action="" name="InquiryAmlProcess" bindingOperationName="InquiryAmlProcess" type="Request-Response" outputName="InquiryAmlProcessResponse" inputName="InquiryAmlProcessRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e9c5fbd0-d833-40a7-a666-6b2c36030ac7" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.102.3.47:8004/be-mortgage/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:alp="http://www.alpabit.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <alp:InquiryAmlProcessRequest>\r
+         <alp:applicationNo>?</alp:applicationNo>\r
+         <alp:workflowId>?</alp:workflowId>\r
+      </alp:InquiryAmlProcessRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.alpabit.com/Mortgage/InquiryAmlProcessRequest"/></con:call></con:operation><con:operation id="302a0956-c185-4962-bf0a-28392a525420" isOneWay="false" action="" name="InquiryDataHumanTask" bindingOperationName="InquiryDataHumanTask" type="Request-Response" outputName="InquiryDataHumanTaskResponse" inputName="InquiryDataHumanTaskRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="91100211-693f-42f0-81b0-a78c03aa6e95" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.102.3.47:8004/be-mortgage/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:alp="http://www.alpabit.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <alp:InquiryDataHumanTaskRequest>\r
+         <alp:AppId>?</alp:AppId>\r
+         <alp:StageCode>?</alp:StageCode>\r
+      </alp:InquiryDataHumanTaskRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.alpabit.com/Mortgage/InquiryDataHumanTaskRequest"/></con:call></con:operation><con:operation id="3b808171-deb4-4fea-8fcd-e93495fb1c67" isOneWay="false" action="" name="InquiryIncome" bindingOperationName="InquiryIncome" type="Request-Response" outputName="InquiryIncomeResponse" inputName="InquiryIncomeRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="c7fcaa74-8c7d-45d4-b1ce-c8636d7a5af4" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.102.3.47:8004/be-mortgage/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:alp="http://www.alpabit.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <alp:InquiryIncomeRequest>\r
+         <alp:requestUuid>?</alp:requestUuid>\r
+         <alp:traceNo>?</alp:traceNo>\r
+         <alp:applicationNo>?</alp:applicationNo>\r
+         <alp:nik>?</alp:nik>\r
+      </alp:InquiryIncomeRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.alpabit.com/Mortgage/InquiryIncomeRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="81bcf31b-7124-4a5a-b76f-7d6b8d53002d" isOneWay="false" action="" name="InquiryInstinct" bindingOperationName="InquiryInstinct" type="Request-Response" outputName="InquiryInstinctResponse" inputName="InquiryInstinctRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="13c2af1a-bae3-4b29-92cb-9363da4e8d7f" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.102.3.47:8004/be-mortgage/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:alp="http://www.alpabit.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <alp:InquiryInstinctRequest>\r
+         <alp:requestUuid>?</alp:requestUuid>\r
+         <alp:traceNo>?</alp:traceNo>\r
+         <alp:applicationNo>?</alp:applicationNo>\r
+         <alp:nik>?</alp:nik>\r
+      </alp:InquiryInstinctRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.alpabit.com/Mortgage/InquiryInstinctRequest"/></con:call></con:operation><con:operation id="fafc208f-ad13-453f-b83e-7208e763d3a7" isOneWay="false" action="" name="InquiryKyc" bindingOperationName="InquiryKyc" type="Request-Response" outputName="InquiryKycResponse" inputName="InquiryKycRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="571dc6c6-63fd-44e5-b612-05c0e5c21772" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.102.3.47:8004/be-mortgage/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:alp="http://www.alpabit.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <alp:InquiryKycRequest>\r
+         <alp:requestUuid>?</alp:requestUuid>\r
+         <alp:traceNo>?</alp:traceNo>\r
+         <alp:applicationNo>?</alp:applicationNo>\r
+         <alp:nik>?</alp:nik>\r
+      </alp:InquiryKycRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.alpabit.com/Mortgage/InquiryKycRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="d02610c2-a081-4b31-aecc-2767115258c2" isOneWay="false" action="" name="InquiryNibc" bindingOperationName="InquiryNibc" type="Request-Response" outputName="InquiryNibcResponse" inputName="InquiryNibcRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="7d65f4ec-9fb4-413d-a145-b21bb11853c6" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.102.3.47:8004/be-mortgage/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:alp="http://www.alpabit.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <alp:InquiryNibcRequest>\r
+         <alp:requestUuid>12</alp:requestUuid>\r
+         <alp:traceNo>123</alp:traceNo>\r
+         <alp:applicationNo>213</alp:applicationNo>\r
+         <alp:nik>1222222222222222</alp:nik>\r
+      </alp:InquiryNibcRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.alpabit.com/Mortgage/InquiryNibcRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="b20bda28-3e51-41a8-844b-d1439303a246" isOneWay="false" action="" name="InquiryPefindo" bindingOperationName="InquiryPefindo" type="Request-Response" outputName="InquiryPefindoResponse" inputName="InquiryPefindoRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="d3b82978-488d-4707-a283-ce0107d9960b" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.102.3.47:8004/be-mortgage/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:alp="http://www.alpabit.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <alp:InquiryPefindoRequest>\r
+         <alp:requestUuid>?</alp:requestUuid>\r
+         <alp:traceNo>?</alp:traceNo>\r
+         <alp:applicationNo>?</alp:applicationNo>\r
+         <alp:nik>?</alp:nik>\r
+      </alp:InquiryPefindoRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.alpabit.com/Mortgage/InquiryPefindoRequest"/></con:call></con:operation><con:operation id="fb8baf24-a25a-4ecb-b422-faf928f35220" isOneWay="false" action="" name="InquiryWealth" bindingOperationName="InquiryWealth" type="Request-Response" outputName="InquiryWealthResponse" inputName="InquiryWealthRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="2b4933b2-f052-4063-b104-d659cc707351" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.102.3.47:8004/be-mortgage/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:alp="http://www.alpabit.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <alp:InquiryWealthRequest>\r
+         <alp:requestUuid>?</alp:requestUuid>\r
+         <alp:traceNo>?</alp:traceNo>\r
+         <alp:applicationNo>?</alp:applicationNo>\r
+         <alp:nik>?</alp:nik>\r
+      </alp:InquiryWealthRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.alpabit.com/Mortgage/InquiryWealthRequest"/></con:call></con:operation><con:operation id="69d8fa0d-79db-49bd-8246-b5f7019faa11" isOneWay="false" action="" name="ProcessAml" bindingOperationName="ProcessAml" type="Request-Response" outputName="ProcessAmlResponse" inputName="ProcessAmlRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ec898dad-1241-4a32-9da0-8c83e705fff7" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.102.3.47:8004/be-mortgage/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:alp="http://www.alpabit.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <alp:ProcessAmlRequest>\r
+         <alp:RequestUuid>?</alp:RequestUuid>\r
+         <alp:TraceNo>?</alp:TraceNo>\r
+         <alp:WorkflowId>?</alp:WorkflowId>\r
+         <alp:ApplicationId>?</alp:ApplicationId>\r
+         <!--1 or more repetitions:-->\r
+         <alp:Data>\r
+            <alp:Name>?</alp:Name>\r
+            <alp:Type>?</alp:Type>\r
+         </alp:Data>\r
+         <alp:StartNumber>?</alp:StartNumber>\r
+         <alp:ApplicationNo>?</alp:ApplicationNo>\r
+      </alp:ProcessAmlRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.alpabit.com/Mortgage/ProcessAmlRequest"/></con:call></con:operation><con:operation id="8601995a-a132-4663-814c-69c47ec4689e" isOneWay="false" action="" name="ProcessPefindo" bindingOperationName="ProcessPefindo" type="Request-Response" outputName="ProcessPefindoResponse" inputName="ProcessPefindoRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="658520da-d3b2-4a30-9191-1d25afda74b4" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.102.3.47:8004/be-mortgage/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:alp="http://www.alpabit.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <alp:ProcessPefindoRequest>\r
+         <alp:workflowId>?</alp:workflowId>\r
+         <!--Optional:-->\r
+         <alp:reffNumber>?</alp:reffNumber>\r
+         <!--Optional:-->\r
+         <alp:idReg>?</alp:idReg>\r
+         <!--Optional:-->\r
+         <alp:statusApp>?</alp:statusApp>\r
+         <!--Optional:-->\r
+         <alp:name>?</alp:name>\r
+         <!--Optional:-->\r
+         <alp:dob>?</alp:dob>\r
+         <!--Optional:-->\r
+         <alp:ktp>?</alp:ktp>\r
+         <!--Optional:-->\r
+         <alp:npwp>?</alp:npwp>\r
+         <!--Optional:-->\r
+         <alp:bornPlace>?</alp:bornPlace>\r
+         <!--Optional:-->\r
+         <alp:phoneNumber>?</alp:phoneNumber>\r
+         <!--Optional:-->\r
+         <alp:mobileNumber>?</alp:mobileNumber>\r
+         <!--Optional:-->\r
+         <alp:ktpAddress_1>?</alp:ktpAddress_1>\r
+         <!--Optional:-->\r
+         <alp:ktpAddress_2>?</alp:ktpAddress_2>\r
+         <!--Optional:-->\r
+         <alp:ktpAddress_3>?</alp:ktpAddress_3>\r
+         <!--Optional:-->\r
+         <alp:ktpAddress_city>?</alp:ktpAddress_city>\r
+         <!--Optional:-->\r
+         <alp:ktpAddress_zipcode>?</alp:ktpAddress_zipcode>\r
+         <!--Optional:-->\r
+         <alp:domAddr_1>?</alp:domAddr_1>\r
+         <!--Optional:-->\r
+         <alp:domAddr_2>?</alp:domAddr_2>\r
+         <!--Optional:-->\r
+         <alp:domAddr_3>?</alp:domAddr_3>\r
+         <!--Optional:-->\r
+         <alp:domAddr_city>?</alp:domAddr_city>\r
+         <!--Optional:-->\r
+         <alp:domAddr_zipcode>?</alp:domAddr_zipcode>\r
+         <!--Optional:-->\r
+         <alp:officeName>?</alp:officeName>\r
+         <!--Optional:-->\r
+         <alp:officeAddr_1>?</alp:officeAddr_1>\r
+         <!--Optional:-->\r
+         <alp:officeAddr_2>?</alp:officeAddr_2>\r
+         <!--Optional:-->\r
+         <alp:officeAddr_3>?</alp:officeAddr_3>\r
+         <!--Optional:-->\r
+         <alp:officeAddr_city>?</alp:officeAddr_city>\r
+         <!--Optional:-->\r
+         <alp:officeAddr_zipcode>?</alp:officeAddr_zipcode>\r
+         <!--Optional:-->\r
+         <alp:kodereffpengguna>?</alp:kodereffpengguna>\r
+         <!--Optional:-->\r
+         <alp:employeeType>?</alp:employeeType>\r
+         <!--Optional:-->\r
+         <alp:custSegment>?</alp:custSegment>\r
+         <!--Optional:-->\r
+         <alp:collateral>?</alp:collateral>\r
+         <!--Optional:-->\r
+         <alp:collateralLtv>?</alp:collateralLtv>\r
+         <!--Optional:-->\r
+         <alp:perusahaan>?</alp:perusahaan>\r
+         <!--Optional:-->\r
+         <alp:mscCode>?</alp:mscCode>\r
+         <!--Optional:-->\r
+         <alp:officePhone>?</alp:officePhone>\r
+         <!--Optional:-->\r
+         <alp:occupation>?</alp:occupation>\r
+         <!--Optional:-->\r
+         <alp:billingAddress>?</alp:billingAddress>\r
+         <!--Optional:-->\r
+         <alp:plafon>?</alp:plafon>\r
+         <!--Optional:-->\r
+         <alp:tenor>?</alp:tenor>\r
+         <!--Optional:-->\r
+         <alp:interest>?</alp:interest>\r
+         <!--Optional:-->\r
+         <alp:homeStatus>?</alp:homeStatus>\r
+         <!--Optional:-->\r
+         <alp:jenisKelamin>?</alp:jenisKelamin>\r
+         <!--Optional:-->\r
+         <alp:tempatPendirian>?</alp:tempatPendirian>\r
+         <!--Optional:-->\r
+         <alp:mmn>?</alp:mmn>\r
+         <!--Optional:-->\r
+         <alp:requestType>?</alp:requestType>\r
+         <!--Optional:-->\r
+         <alp:inquiryReason>?</alp:inquiryReason>\r
+         <!--Optional:-->\r
+         <alp:inquiryReasonText>?</alp:inquiryReasonText>\r
+      </alp:ProcessPefindoRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.alpabit.com/Mortgage/ProcessPefindoRequest"/></con:call></con:operation><con:operation id="93e4245a-4751-4192-9ec5-98b7e2834530" isOneWay="false" action="" name="ReAssignApplicationTask" bindingOperationName="ReAssignApplicationTask" type="Request-Response" outputName="ReAssignApplicationTaskResponse" inputName="ReAssignApplicationTaskRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="12e1f74d-d6f7-466d-af61-e0e16ad0a1b5" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.102.3.47:8004/be-mortgage/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:alp="http://www.alpabit.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <alp:ReAssignApplicationTaskRequest>\r
+         <alp:NPK>?</alp:NPK>\r
+         <alp:AssignToNPK>?</alp:AssignToNPK>\r
+         <alp:TaskId>?</alp:TaskId>\r
+         <alp:AppId>?</alp:AppId>\r
+      </alp:ReAssignApplicationTaskRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.alpabit.com/Mortgage/ReAssignApplicationTaskRequest"/></con:call></con:operation><con:operation id="bc342861-8411-4440-bc1f-cf4dc247fe1e" isOneWay="false" action="" name="SaveAmlRecomendation" bindingOperationName="SaveAmlRecomendation" type="Request-Response" outputName="SaveAmlRecomendationResponse" inputName="SaveAmlRecomendationRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="268ace1d-0fff-457e-a309-f63d5a5b1ade" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.102.3.47:8004/be-mortgage/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:alp="http://www.alpabit.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <alp:SaveAmlRecomendationRequest>\r
+         <alp:RecomendSubmission>?</alp:RecomendSubmission>\r
+      </alp:SaveAmlRecomendationRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.alpabit.com/Mortgage/SaveAmlRecomendationRequest"/></con:call></con:operation><con:operation id="a777da99-e73a-4a6e-ac62-6676f4170485" isOneWay="false" action="" name="SaveWorkflowDetailBpm" bindingOperationName="SaveWorkflowDetailBpm" type="Request-Response" outputName="SaveWorkflowDetailBpmResponse" inputName="SaveWorkflowDetailBpmRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="0d03ba75-8a78-4204-89c5-aa74a58f1580" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.102.3.47:8004/be-mortgage/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:alp="http://www.alpabit.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <alp:SaveWorkflowDetailBpmRequest>\r
+         <alp:applicationNo>?</alp:applicationNo>\r
+         <alp:workflowId>?</alp:workflowId>\r
+      </alp:SaveWorkflowDetailBpmRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.alpabit.com/Mortgage/SaveWorkflowDetailBpmRequest"/></con:call></con:operation><con:operation id="6e274b64-2eec-493d-aa09-004c583064b4" isOneWay="false" action="" name="SaveWorkflowHeaderBpm" bindingOperationName="SaveWorkflowHeaderBpm" type="Request-Response" outputName="SaveWorkflowHeaderBpmResponse" inputName="SaveWorkflowHeaderBpmRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="2c2a4c1e-bed8-436f-861b-ee91a9b5f0c9" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.102.3.47:8004/be-mortgage/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:alp="http://www.alpabit.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <alp:SaveWorkflowHeaderBpmRequest>\r
+         <alp:applicationNo>?</alp:applicationNo>\r
+         <alp:workflowId>?</alp:workflowId>\r
+      </alp:SaveWorkflowHeaderBpmRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.alpabit.com/Mortgage/SaveWorkflowHeaderBpmRequest"/></con:call></con:operation><con:operation id="1488a154-368e-4ddb-bf87-dd749fdb6f98" isOneWay="false" action="" name="submissionForBPM" bindingOperationName="submissionForBPM" type="Request-Response" outputName="submissionForBPMResponse" inputName="submissionForBPMRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="cc86993e-8910-4e58-9dde-58261a56f79b" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.102.3.47:8004/be-mortgage/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:alp="http://www.alpabit.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <alp:submissionForBPMRequest>\r
+         <alp:msgHeaderRq>\r
+            <alp:reqId>?</alp:reqId>\r
+            <alp:traceNumber>?</alp:traceNumber>\r
+         </alp:msgHeaderRq>\r
+         <alp:msgBodyRq>\r
+            <alp:applicationNumber>?</alp:applicationNumber>\r
+            <alp:channel>?</alp:channel>\r
+            <alp:deviceId>?</alp:deviceId>\r
+            <alp:productCode>?</alp:productCode>\r
+            <alp:referralCode>?</alp:referralCode>\r
+            <alp:salesCode>?</alp:salesCode>\r
+            <alp:maritalStatusCode>?</alp:maritalStatusCode>\r
+            <alp:premaritalAgreement>?</alp:premaritalAgreement>\r
+            <alp:jointIncome>?</alp:jointIncome>\r
+            <alp:eligibilityStatusIndent>?</alp:eligibilityStatusIndent>\r
+            <!--1 or more repetitions:-->\r
+            <alp:applicationDetail>\r
+               <alp:isSyariahFlag>?</alp:isSyariahFlag>\r
+               <alp:subProductCode>?</alp:subProductCode>\r
+               <alp:developerGroupCode>?</alp:developerGroupCode>\r
+               <alp:developerCode>?</alp:developerCode>\r
+               <alp:projectCode>?</alp:projectCode>\r
+               <alp:propertyType>?</alp:propertyType>\r
+               <alp:subProjectCode>?</alp:subProjectCode>\r
+               <alp:buildingSize>?</alp:buildingSize>\r
+               <alp:landSize>?</alp:landSize>\r
+               <alp:propertyStatus>?</alp:propertyStatus>\r
+               <alp:purchasePrice>?</alp:purchasePrice>\r
+               <alp:downPayment>?</alp:downPayment>\r
+               <alp:tenor>?</alp:tenor>\r
+               <alp:interestRate>?</alp:interestRate>\r
+            </alp:applicationDetail>\r
+            <alp:applicant>\r
+               <alp:identificationNumber>?</alp:identificationNumber>\r
+               <alp:fullName>?</alp:fullName>\r
+               <alp:placeOfBirth>?</alp:placeOfBirth>\r
+               <alp:dateOfBirth>?</alp:dateOfBirth>\r
+               <alp:maritalStatusCode>?</alp:maritalStatusCode>\r
+               <alp:religionCode>?</alp:religionCode>\r
+               <alp:motherName>?</alp:motherName>\r
+               <alp:lastEducation>?</alp:lastEducation>\r
+               <alp:homeNumber>?</alp:homeNumber>\r
+               <alp:workOverseas>?</alp:workOverseas>\r
+               <alp:employmentType>?</alp:employmentType>\r
+               <alp:employmentStatus>?</alp:employmentStatus>\r
+               <alp:position>?</alp:position>\r
+               <alp:companyName>?</alp:companyName>\r
+               <alp:workNumber>?</alp:workNumber>\r
+               <alp:income>?</alp:income>\r
+               <alp:usernameBPJS>?</alp:usernameBPJS>\r
+               <alp:password>?</alp:password>\r
+               <alp:lengthOfWorkYears>?</alp:lengthOfWorkYears>\r
+               <alp:lengthOfWorkMonth>?</alp:lengthOfWorkMonth>\r
+               <alp:badanHukum>?</alp:badanHukum>\r
+               <alp:companyNPWP>?</alp:companyNPWP>\r
+               <alp:companyType>?</alp:companyType>\r
+               <alp:businessLicenceNumber>?</alp:businessLicenceNumber>\r
+               <alp:businessLicenceDate>?</alp:businessLicenceDate>\r
+               <alp:addressApplicant>\r
+                  <alp:address1>?</alp:address1>\r
+                  <alp:address2>?</alp:address2>\r
+                  <alp:RTRW>?</alp:RTRW>\r
+                  <alp:village>?</alp:village>\r
+                  <alp:subDistrict>?</alp:subDistrict>\r
+                  <alp:city>?</alp:city>\r
+                  <alp:district>?</alp:district>\r
+                  <alp:zipCode>?</alp:zipCode>\r
+               </alp:addressApplicant>\r
+               <alp:addressDomicile>\r
+                  <alp:address1>?</alp:address1>\r
+                  <alp:address2>?</alp:address2>\r
+                  <alp:RTRW>?</alp:RTRW>\r
+                  <alp:village>?</alp:village>\r
+                  <alp:subDistrict>?</alp:subDistrict>\r
+                  <alp:city>?</alp:city>\r
+                  <alp:district>?</alp:district>\r
+                  <alp:zipCode>?</alp:zipCode>\r
+               </alp:addressDomicile>\r
+               <alp:addressWorkingLocation>\r
+                  <alp:address1>?</alp:address1>\r
+                  <alp:address2>?</alp:address2>\r
+                  <alp:RTRW>?</alp:RTRW>\r
+                  <alp:village>?</alp:village>\r
+                  <alp:subDistrict>?</alp:subDistrict>\r
+                  <alp:city>?</alp:city>\r
+                  <alp:district>?</alp:district>\r
+                  <alp:zipCode>?</alp:zipCode>\r
+               </alp:addressWorkingLocation>\r
+            </alp:applicant>\r
+            <alp:spouse>\r
+               <alp:identificationNumber>?</alp:identificationNumber>\r
+               <alp:fullName>?</alp:fullName>\r
+               <alp:placeOfBirth>?</alp:placeOfBirth>\r
+               <alp:dateOfBirth>?</alp:dateOfBirth>\r
+               <alp:maritalStatusCode>?</alp:maritalStatusCode>\r
+               <alp:religionCode>?</alp:religionCode>\r
+               <alp:GCN>?</alp:GCN>\r
+               <alp:CIF>?</alp:CIF>\r
+               <alp:CIFSource>?</alp:CIFSource>\r
+               <alp:ETBFlag>?</alp:ETBFlag>\r
+               <alp:ETBPayrollFlag>?</alp:ETBPayrollFlag>\r
+               <alp:employmentType>?</alp:employmentType>\r
+               <alp:employmentStatus>?</alp:employmentStatus>\r
+               <alp:position>?</alp:position>\r
+               <alp:companyName>?</alp:companyName>\r
+               <alp:workPhoneNumber>?</alp:workPhoneNumber>\r
+               <alp:income>?</alp:income>\r
+               <alp:usernameBPJS>?</alp:usernameBPJS>\r
+               <alp:password>?</alp:password>\r
+               <alp:lengthOfWorkYears>?</alp:lengthOfWorkYears>\r
+               <alp:lengthOfWorkMonth>?</alp:lengthOfWorkMonth>\r
+               <alp:badanHukum>?</alp:badanHukum>\r
+               <alp:companyNPWP>?</alp:companyNPWP>\r
+               <alp:economySector>?</alp:economySector>\r
+               <alp:companyType>?</alp:companyType>\r
+               <alp:businessLicenceNumber>?</alp:businessLicenceNumber>\r
+               <alp:businessLicenceDate>?</alp:businessLicenceDate>\r
+               <alp:addressSpouse>\r
+                  <alp:address1>?</alp:address1>\r
+                  <alp:address2>?</alp:address2>\r
+                  <alp:RTRW>?</alp:RTRW>\r
+                  <alp:village>?</alp:village>\r
+                  <alp:subDistrict>?</alp:subDistrict>\r
+                  <alp:city>?</alp:city>\r
+                  <alp:district>?</alp:district>\r
+                  <alp:zipCode>?</alp:zipCode>\r
+               </alp:addressSpouse>\r
+               <alp:addressWorkingLocation>\r
+                  <alp:address1>?</alp:address1>\r
+                  <alp:address2>?</alp:address2>\r
+                  <alp:RTRW>?</alp:RTRW>\r
+                  <alp:village>?</alp:village>\r
+                  <alp:subDistrict>?</alp:subDistrict>\r
+                  <alp:city>?</alp:city>\r
+                  <alp:district>?</alp:district>\r
+                  <alp:zipCode>?</alp:zipCode>\r
+               </alp:addressWorkingLocation>\r
+            </alp:spouse>\r
+            <!--1 or more repetitions:-->\r
+            <alp:document>\r
+               <alp:documentType>?</alp:documentType>\r
+               <alp:documentTitle>?</alp:documentTitle>\r
+               <alp:documentStatus>?</alp:documentStatus>\r
+            </alp:document>\r
+         </alp:msgBodyRq>\r
+      </alp:submissionForBPMRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.alpabit.com/Mortgage/submissionForBPMRequest"/></con:call></con:operation><con:operation id="c427e04b-0783-4861-a002-740e9bd039ae" isOneWay="false" action="" name="SubmitApplicationTask" bindingOperationName="SubmitApplicationTask" type="Request-Response" outputName="SubmitApplicationTaskResponse" inputName="SubmitApplicationTaskRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ff18d8d8-233f-467b-875b-43defa15bc5a" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.102.3.47:8004/be-mortgage/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:alp="http://www.alpabit.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <alp:SubmitApplicationTaskRequest>\r
+         <alp:NPK>?</alp:NPK>\r
+         <alp:Action>?</alp:Action>\r
+         <alp:TaskId>?</alp:TaskId>\r
+         <alp:AppId>?</alp:AppId>\r
+      </alp:SubmitApplicationTaskRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.alpabit.com/Mortgage/SubmitApplicationTaskRequest"/></con:call></con:operation><con:operation id="b0caba11-9681-47eb-bb04-5893254cc99c" isOneWay="false" action="" name="SubmitApplicationTaskAMLRecomendSubmission" bindingOperationName="SubmitApplicationTaskAMLRecomendSubmission" type="Request-Response" outputName="SubmitApplicationTaskAMLRecomendSubmissionResponse" inputName="SubmitApplicationTaskAMLRecomendSubmissionRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="9563d594-1168-4615-8181-3652c2fcabe0" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.102.3.47:8004/be-mortgage/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:alp="http://www.alpabit.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <alp:SubmitApplicationTaskAMLRecomendSubmissionRequest>\r
+         <alp:NPK>?</alp:NPK>\r
+         <alp:RecomendSubmission>?</alp:RecomendSubmission>\r
+         <alp:TaskId>?</alp:TaskId>\r
+         <alp:AppId>?</alp:AppId>\r
+      </alp:SubmitApplicationTaskAMLRecomendSubmissionRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.alpabit.com/Mortgage/SubmitApplicationTaskAMLRecomendSubmissionRequest"/></con:call></con:operation><con:operation id="d9053d55-f5c1-4970-96a6-3ea7ed082520" isOneWay="false" action="" name="SubmitApplicationTaskAndAssign" bindingOperationName="SubmitApplicationTaskAndAssign" type="Request-Response" outputName="SubmitApplicationTaskAndAssignResponse" inputName="SubmitApplicationTaskAndAssignRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="01b3916c-d817-43be-a25e-e8645ddbb0da" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.102.3.47:8004/be-mortgage/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:alp="http://www.alpabit.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <alp:SubmitApplicationTaskAndAssignRequest>\r
+         <alp:NPK>?</alp:NPK>\r
+         <!--1 or more repetitions:-->\r
+         <alp:AssignToNPKList>\r
+            <alp:NPK>?</alp:NPK>\r
+            <alp:Action>?</alp:Action>\r
+            <alp:TaskId>?</alp:TaskId>\r
+            <alp:AppId>?</alp:AppId>\r
+         </alp:AssignToNPKList>\r
+      </alp:SubmitApplicationTaskAndAssignRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.alpabit.com/Mortgage/SubmitApplicationTaskAndAssignRequest"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
